@@ -18,35 +18,38 @@ public struct CITTopTabBarView: View {
     }
     
     public var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center, spacing: 0) {
                 ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                    Text(item.title)
-                        .padding()
-                        .onTapGesture {
-                            selectTab(index)
-                        }
-                        .overlay(
+                    Button(action: { selectTab(index) }) {
+                        VStack(spacing: 0) {
+                            Text(item.title)
+                                .padding()
+                            
                             optionalSelector(at: index)
-                        )
+                                .animation(.easeOut(duration: 0.2))
+                        }
+                    }
                 }
             }
+            .background(Color(UIColor.systemGray5))
+//            .animation(.easeOut(duration: 0.2))
         }
-        .background(Color(UIColor.systemGray5))
     }
+    
     
     @ViewBuilder
     private func optionalSelector(at index: Int) -> some View {
         if selectedTab == index {
-            VStack {
-                Spacer()
-                Color.red
-                    .frame(height: 5)
-                    .cornerRadius(.infinity)
-            }
-            .allowsHitTesting(false)
-            .matchedGeometryEffect(id: "indicator", in: animation)
-            .animation(.easeOut(duration: 0.3))
+            Color.red
+                .frame(height: 5)
+                .cornerRadius(.infinity)
+                .matchedGeometryEffect(id: "indicator", in: animation)
+                .animation(.easeOut(duration: 2))
+        } else {
+            Color.clear
+                .frame(height: 5)
+                .animation(.easeOut(duration: 4))
         }
     }
     
@@ -59,15 +62,15 @@ public struct CITTopTabBarView: View {
 struct CITTopTabBarView_Previews: PreviewProvider {
     static var previews: some View {
         CITTopTabBarView(selectedTab: .constant(0), tabs: .constant([
-            .init(icon: Image(systemName: "music.note"), title: "Music"),
-            .init(icon: Image(systemName: "film.fill"), title: "Movies"),
-            .init(icon: Image(systemName: "book.fill"), title: "Books"),
-            .init(icon: Image(systemName: "music.note"), title: "Music"),
-            .init(icon: Image(systemName: "film.fill"), title: "Movies"),
-            .init(icon: Image(systemName: "book.fill"), title: "Books"),
-            .init(icon: Image(systemName: "music.note"), title: "Music"),
-            .init(icon: Image(systemName: "film.fill"), title: "Movies"),
-            .init(icon: Image(systemName: "book.fill"), title: "Books")
+            .init(title: "Long Example"),
+            .init(title: "Movies"),
+            .init(title: "Books"),
+            .init(title: "Music"),
+            .init(title: "Movies"),
+            .init(title: "Books"),
+            .init(title: "Music"),
+            .init(title: "Movies"),
+            .init(title: "Books")
         ]))
     }
 }

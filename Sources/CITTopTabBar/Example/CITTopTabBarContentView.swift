@@ -11,15 +11,15 @@ public struct CITTopTabBarContentView: View {
     @State private var selectedTab: Int = 0
 
     @State private var tabs: [CITTopTab] = [
-        .init(icon: Image(systemName: "music.note"), title: "Music"),
-        .init(icon: Image(systemName: "film.fill"), title: "Movies"),
-        .init(icon: Image(systemName: "book.fill"), title: "Books"),
-        .init(icon: Image(systemName: "music.note"), title: "Music"),
-        .init(icon: Image(systemName: "film.fill"), title: "Movies"),
-        .init(icon: Image(systemName: "book.fill"), title: "Books"),
-        .init(icon: Image(systemName: "music.note"), title: "Music"),
-        .init(icon: Image(systemName: "film.fill"), title: "Movies"),
-        .init(icon: Image(systemName: "book.fill"), title: "Books")
+        .init(title: "Music"),
+        .init(title: "Movies"),
+        .init(title: "Books"),
+        .init(title: "Music"),
+        .init(title: "Movies"),
+        .init(title: "Books"),
+        .init(title: "Music"),
+        .init(title: "Movies"),
+        .init(title: "Books")
     ]
 
     public init() {

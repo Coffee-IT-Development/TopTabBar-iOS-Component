@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-public struct CITTopTab {
-    public var icon: Image?
+public struct CITTopTab: Identifiable, Hashable {
+    public var id = UUID()
     public var title: String
     
-    public init(icon: Image? = nil, title: String) {
-        self.icon = icon
+    public init(title: String) {
         self.title = title
     }
 }

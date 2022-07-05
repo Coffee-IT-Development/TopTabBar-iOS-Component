@@ -34,9 +34,9 @@ public struct CITOnlineExampleTabsView: View {
                                 VStack(spacing: 0) {
                                     HStack {
                                         // Image
-                                        AnyView(tabs[row].icon)
-                                            .foregroundColor(.white)
-                                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
+                                        //                                        AnyView(tabs[row].icon)
+                                        //                                            .foregroundColor(.white)
+                                        //                                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
                                         // Text
                                         Text(tabs[row].title)
                                             .font(Font.system(size: 18, weight: .semibold))
@@ -73,11 +73,15 @@ public struct CITOnlineExampleTabsView: View {
 }
 struct CITOnlineExampleTabsView_Previews: PreviewProvider {
     static var previews: some View {
-        CITOnlineExampleTabsView(fixed: true,
-             tabs: [.init(icon: Image(systemName: "star.fill"), title: "Tab 1"),
-                    .init(icon: Image(systemName: "star.fill"), title: "Tab 2"),
-                    .init(icon: Image(systemName: "star.fill"), title: "Tab 3")],
-             geoWidth: 375,
-             selectedTab: .constant(0))
+        CITOnlineExampleTabsView(
+            fixed: true,
+            tabs: [
+                .init(title: "Tab 1"),
+                .init(title: "Tab 2"),
+                .init(title: "Tab 3")
+            ],
+            geoWidth: 375,
+            selectedTab: .constant(0)
+        )
     }
 }
