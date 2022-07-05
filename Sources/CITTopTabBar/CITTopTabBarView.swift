@@ -8,31 +8,27 @@
 import SwiftUI
 
 public struct CITTopTabBarView: View {
+    @Namespace private var animation
     @Binding var selectedTab: Int
-    @Binding var tabs: [Tab]
+    @Binding var tabs: [CITTopTab]
     
-    public init(selectedTab: Binding<Int>, tabs: Binding<[Tab]>) {
+    public init(selectedTab: Binding<Int>, tabs: Binding<[CITTopTab]>) {
         self._selectedTab = selectedTab
         self._tabs = tabs
     }
     
     public var body: some View {
         ScrollView(.horizontal) {
-            Button(action: {
-                selectTab(3)
-            }) {
-                Text("Try me")
-            }
-            
             HStack(alignment: .center, spacing: 0) {
                 ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                    Button(action: { selectTab(index) }) {
-                        Text(item.title)
-                            .padding()
-                            .overlay(
-                                optionalSelector(at: index)
-                            )
-                    }
+                    Text(item.title)
+                        .padding()
+                        .onTapGesture {
+                            selectTab(index)
+                        }
+                        .overlay(
+                            optionalSelector(at: index)
+                        )
                 }
             }
         }
@@ -49,9 +45,11 @@ public struct CITTopTabBarView: View {
                     .cornerRadius(.infinity)
             }
             .allowsHitTesting(false)
+            .matchedGeometryEffect(id: "indicator", in: animation)
+            .animation(.easeOut(duration: 0.3))
         }
     }
-                           
+    
     private func selectTab(_ index: Int) {
         print("[TEST] Set selected tab to \(index)")
         selectedTab = index

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CITTopTabBarContentView.swift
 //  
 //
 //  Created by Lex Brouwers on 30/06/2022.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-public struct ContentView: View {
+public struct CITTopTabBarContentView: View {
     @State private var selectedTab: Int = 0
 
-    @State private var tabs: [Tab] = [
+    @State private var tabs: [CITTopTab] = [
         .init(icon: Image(systemName: "music.note"), title: "Music"),
         .init(icon: Image(systemName: "film.fill"), title: "Movies"),
         .init(icon: Image(systemName: "book.fill"), title: "Books"),
@@ -64,6 +64,6 @@ public struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CITTopTabBarContentView()
     }
 }

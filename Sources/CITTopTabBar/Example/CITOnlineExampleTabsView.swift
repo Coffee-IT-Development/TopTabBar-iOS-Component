@@ -1,5 +1,5 @@
 //
-//  TabsView.swift
+//  CITOnlineExampleTabsView.swift
 //  
 //
 //  Created by Lex Brouwers on 30/06/2022.
@@ -7,23 +7,13 @@
 
 import SwiftUI
 
-public struct Tab {
-    public var icon: Image?
-    public var title: String
-    
-    public init(icon: Image? = nil, title: String) {
-        self.icon = icon
-        self.title = title
-    }
-}
-
-public struct Tabs: View {
+public struct CITOnlineExampleTabsView: View {
     var fixed = false
-    var tabs: [Tab]
+    var tabs: [CITTopTab]
     var geoWidth: CGFloat
     @Binding var selectedTab: Int
     
-    public init(fixed: Bool = true, tabs: [Tab], geoWidth: CGFloat, selectedTab: Binding<Int>) {
+    public init(fixed: Bool = true, tabs: [CITTopTab], geoWidth: CGFloat, selectedTab: Binding<Int>) {
         self.fixed = fixed
         self.tabs = tabs
         self.geoWidth = geoWidth
@@ -81,9 +71,9 @@ public struct Tabs: View {
         })
     }
 }
-struct Tabs_Previews: PreviewProvider {
+struct CITOnlineExampleTabsView_Previews: PreviewProvider {
     static var previews: some View {
-        Tabs(fixed: true,
+        CITOnlineExampleTabsView(fixed: true,
              tabs: [.init(icon: Image(systemName: "star.fill"), title: "Tab 1"),
                     .init(icon: Image(systemName: "star.fill"), title: "Tab 2"),
                     .init(icon: Image(systemName: "star.fill"), title: "Tab 3")],
