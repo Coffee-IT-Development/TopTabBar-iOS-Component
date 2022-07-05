@@ -10,7 +10,13 @@ import SwiftUI
 public struct ContentView: View {
     @State private var selectedTab: Int = 0
 
-    let tabs: [Tab] = [
+    @State private var tabs: [Tab] = [
+        .init(icon: Image(systemName: "music.note"), title: "Music"),
+        .init(icon: Image(systemName: "film.fill"), title: "Movies"),
+        .init(icon: Image(systemName: "book.fill"), title: "Books"),
+        .init(icon: Image(systemName: "music.note"), title: "Music"),
+        .init(icon: Image(systemName: "film.fill"), title: "Movies"),
+        .init(icon: Image(systemName: "book.fill"), title: "Books"),
         .init(icon: Image(systemName: "music.note"), title: "Music"),
         .init(icon: Image(systemName: "film.fill"), title: "Movies"),
         .init(icon: Image(systemName: "book.fill"), title: "Books")
@@ -30,8 +36,10 @@ public struct ContentView: View {
         NavigationView {
             GeometryReader { geo in
                 VStack(spacing: 0) {
-                    // Tabs
-                    Tabs(tabs: tabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
+                    
+                    CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs)
+//                    // Tabs
+//                    Tabs(tabs: tabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
 
                     // Views
                     TabView(selection: $selectedTab,

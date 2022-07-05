@@ -18,7 +18,7 @@ public struct Tab {
 }
 
 public struct Tabs: View {
-    var fixed = true
+    var fixed = false
     var tabs: [Tab]
     var geoWidth: CGFloat
     @Binding var selectedTab: Int
