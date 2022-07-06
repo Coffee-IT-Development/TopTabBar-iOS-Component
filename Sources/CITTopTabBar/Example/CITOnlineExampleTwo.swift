@@ -18,8 +18,9 @@ struct CITOnlineExampleTwo: View {
                 view2.tag(1)
                 view3.tag(2)
             })
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .edgesIgnoringSafeArea(.all)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .edgesIgnoringSafeArea(.all)
+            
             navigationBarView
         }
     }
@@ -44,7 +45,7 @@ struct CITOnlineExampleTwo: View {
     
     func navBarItem(string: String, tab: Int) -> some View {
         Button {
-                self.currentTab = tab
+            self.currentTab = tab
         } label: {
             VStack {
                 Spacer()
@@ -60,11 +61,11 @@ struct CITOnlineExampleTwo: View {
         }
         .buttonStyle(.plain)
     }
-
+    
     var view1: some View {
         Color.red.opacity(0.2).edgesIgnoringSafeArea(.all)
     }
-
+    
     var view2: some View {
         Color.blue.opacity(0.2).edgesIgnoringSafeArea(.all)
     }
