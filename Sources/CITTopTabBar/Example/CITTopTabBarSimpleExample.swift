@@ -24,7 +24,7 @@ struct CITTopTabBarSimpleExample: View {
         VStack {
             Text("Selected: \(selectedTab)")
             
-            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs)
+            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: .example)
             Spacer()
         }
     }

@@ -11,10 +11,12 @@ public struct CITTopTabBarView: View {
     @Namespace private var namespace
     @Binding var selectedTab: Int
     @Binding var tabs: [CITTopTab]
+    private var config: CITTopTabBarConfig
     
-    public init(selectedTab: Binding<Int>, tabs: Binding<[CITTopTab]>) {
+    public init(selectedTab: Binding<Int>, tabs: Binding<[CITTopTab]>, config: CITTopTabBarConfig) {
         self._selectedTab = selectedTab
         self._tabs = tabs
+        self.config = config
     }
     
     public var body: some View {
@@ -26,8 +28,7 @@ public struct CITTopTabBarView: View {
             }
             .padding(.top, 60)
             .background(
-                Color(UIColor.systemGray5)
-                    .padding(.horizontal, -UIScreen.main.bounds.width)
+                tabBarBackground
             )
         }
         .edgesIgnoringSafeArea(.top)
@@ -38,24 +39,37 @@ public struct CITTopTabBarView: View {
             selectedTab = index
         } label: {
             VStack {
-                Text(item.title)
-                    .font(.system(size: 13, weight: .light, design: .default))
-                    .padding(.top, 20)
-                    .padding(.horizontal, 20)
-                
-                if selectedTab == index {
-                    Color.red
-                        .frame(height: 2)
-                        .cornerRadius(.infinity)
-                        .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
-                } else {
-                    Color.clear
-                        .frame(height: 2)
-                }
+                tabContent(for: item)
+                optionalIndicator(at: index)
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
         }
         .buttonStyle(.plain)
+    }
+    
+    private func tabContent(for item: CITTopTab) -> some View {
+        Text(item.title)
+            .font(.system(size: 13, weight: .light, design: .default))
+            .padding(.top, 20)
+            .padding(.horizontal, 20)
+    }
+    
+    @ViewBuilder
+    private func optionalIndicator(at index: Int) -> some View {
+        if selectedTab == index {
+            Color.red
+                .frame(height: 2)
+                .cornerRadius(.infinity)
+                .matchedGeometryEffect(id: "indicator", in: namespace, properties: .frame)
+        } else {
+            Color.clear
+                .frame(height: 2)
+        }
+    }
+    
+    private var tabBarBackground: some View {
+        Color(UIColor.systemGray5)
+            .padding(.horizontal, -UIScreen.main.bounds.width)
     }
 }
 
@@ -70,7 +84,7 @@ struct CITTopTabBarView_Previews: PreviewProvider {
                 .init(title: "Series"),
                 .init(title: "Films"),
                 .init(title: "Fun"),
-            ]))
+            ]), config: .example)
             
             Spacer()
         }

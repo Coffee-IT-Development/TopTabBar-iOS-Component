@@ -37,7 +37,7 @@ public struct CITTopTabBarContentView: View {
             GeometryReader { geo in
                 VStack(spacing: 0) {
                     
-                    CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs)
+                    CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: .example)
 //                    // Tabs
 //                    Tabs(tabs: tabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
 
