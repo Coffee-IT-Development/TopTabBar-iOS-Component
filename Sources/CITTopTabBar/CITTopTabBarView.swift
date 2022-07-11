@@ -21,7 +21,7 @@ public struct CITTopTabBarView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
                 ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                    navBarItem(item: item, tab: index)
+                    navBarItem(index, item)
                 }
             }
             .padding(.top, 60)
@@ -33,9 +33,9 @@ public struct CITTopTabBarView: View {
         .edgesIgnoringSafeArea(.top)
     }
     
-    private func navBarItem(item: CITTopTab, tab: Int) -> some View {
+    private func navBarItem(_ index: Int, _ item: CITTopTab) -> some View {
         Button {
-            selectedTab = tab
+            selectedTab = index
         } label: {
             VStack {
                 Text(item.title)
@@ -43,7 +43,7 @@ public struct CITTopTabBarView: View {
                     .padding(.top, 20)
                     .padding(.horizontal, 20)
                 
-                if selectedTab == tab {
+                if selectedTab == index {
                     Color.red
                         .frame(height: 2)
                         .cornerRadius(.infinity)
