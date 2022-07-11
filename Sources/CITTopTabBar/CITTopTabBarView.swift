@@ -17,44 +17,28 @@ public struct CITTopTabBarView: View {
         self._tabs = tabs
     }
     
-    
-//    public var body: some View {
-//        VStack(spacing: 0) {
-//            navigationBarView
-//
-//            TabView(selection: self.$selectedTab, content: {
-//                view1.tag(0)
-//                view2.tag(1)
-//                view3.tag(2)
-//            })
-//            .tabViewStyle(.page(indexDisplayMode: .never))
-//            .edgesIgnoringSafeArea(.all)
-//        }
-//    }
-    
-    var navigationitems: [String] = ["Hello World", "This is", "A Pretty Cool Tab Bar"]
-    
-    var navigationBarView: some View {
-        ScrollView(.horizontal) {
-            HStack(alignment: .bottom, spacing: 20) {
-                ForEach(Array(zip(self.navigationitems.indices, self.navigationitems)), id: \.0, content: {
-                    index, name in
-                    navBarItem(string: name, tab: index)
-                })
+    public var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 0) {
+                ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
+                    navBarItem(item: item, tab: index)
+                }
             }
-            .padding(.horizontal)
-            .edgesIgnoringSafeArea(.top)
+            .padding(.top, 60)
+            .background(
+                Color(UIColor.systemGray5)
+                    .padding(.horizontal, -UIScreen.main.bounds.width)
+            )
         }
-        .background(Color.white)
+        .edgesIgnoringSafeArea(.top)
     }
     
-    
-    func navBarItem(string: String, tab: Int) -> some View {
+    private func navBarItem(item: CITTopTab, tab: Int) -> some View {
         Button {
             selectedTab = tab
         } label: {
             VStack {
-                Text(string)
+                Text(item.title)
                     .font(.system(size: 13, weight: .light, design: .default))
                     .padding(.top, 20)
                     .padding(.horizontal, 20)
@@ -73,76 +57,22 @@ public struct CITTopTabBarView: View {
         }
         .buttonStyle(.plain)
     }
-    
-    
-
-    
-    public var body: some View {
-//        VStack(spacing: 0) {
-//            Color(UIColor.systemGray5)
-            tabBar
-//        }
-//        .edgesIgnoringSafeArea(.top)
-    }
-    
-    var tabBar: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .center, spacing: 0) {
-                ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                    navBarItem(string: item.title, tab: index)
-                    
-                    
-//                    Button(action: { selectTab(index) }) {
-//                        VStack(spacing: 0) {
-//                            Text(item.title)
-//                                .padding()
-//
-////                            optionalSelector(at: index)
-//                        }
-//                        .animation(.spring(), value: $selectedTab.wrappedValue)
-//                    }
-                }
-            }
-            .padding(.top, 60)
-            .background(
-                Color(UIColor.systemGray5).padding(.horizontal, -UIScreen.main.bounds.width)
-            )
-        }
-        .edgesIgnoringSafeArea(.top)
-    }
-    
-    
-//    @ViewBuilder
-//    private func optionalSelector(at index: Int) -> some View {
-//        if selectedTab == index {
-//            Color.red
-//                .frame(height: 5)
-//                .cornerRadius(.infinity)
-//                .matchedGeometryEffect(id: "underline", in: namespace)
-//                .animation(.easeOut(duration: 2))
-//        } else {
-//            Color.clear
-//                .frame(height: 5)
-//                .animation(.easeOut(duration: 4))
-//        }
-//    }
-    
-    private func selectTab(_ index: Int) {
-        print("[TEST] Set selected tab to \(index)")
-        selectedTab = index
-    }
 }
 
 struct CITTopTabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        CITTopTabBarView(selectedTab: .constant(0), tabs: .constant([
-            .init(title: "Long Example"),
-            .init(title: "Movies"),
-            .init(title: "Books"),
-            .init(title: "Sports"),
-            .init(title: "Series"),
-            .init(title: "Films"),
-            .init(title: "Fun"),
-        ]))
+        VStack {
+            CITTopTabBarView(selectedTab: .constant(0), tabs: .constant([
+                .init(title: "Long Example"),
+                .init(title: "Movies"),
+                .init(title: "Books"),
+                .init(title: "Sports"),
+                .init(title: "Series"),
+                .init(title: "Films"),
+                .init(title: "Fun"),
+            ]))
+            
+            Spacer()
+        }
     }
 }
