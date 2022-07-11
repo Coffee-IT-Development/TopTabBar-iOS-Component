@@ -18,19 +18,19 @@ public struct CITTopTabBarView: View {
     }
     
     
-    public var body: some View {
-        VStack(spacing: 0) {
-            navigationBarView
-                        
-            TabView(selection: self.$selectedTab, content: {
-                view1.tag(0)
-                view2.tag(1)
-                view3.tag(2)
-            })
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .edgesIgnoringSafeArea(.all)
-        }
-    }
+//    public var body: some View {
+//        VStack(spacing: 0) {
+//            navigationBarView
+//
+//            TabView(selection: self.$selectedTab, content: {
+//                view1.tag(0)
+//                view2.tag(1)
+//                view3.tag(2)
+//            })
+//            .tabViewStyle(.page(indexDisplayMode: .never))
+//            .edgesIgnoringSafeArea(.all)
+//        }
+//    }
     
     var navigationitems: [String] = ["Hello World", "This is", "A Pretty Cool Tab Bar"]
     
@@ -51,18 +51,22 @@ public struct CITTopTabBarView: View {
     
     func navBarItem(string: String, tab: Int) -> some View {
         Button {
-            self.selectedTab = tab
+            selectedTab = tab
         } label: {
             VStack {
                 Text(string)
                     .font(.system(size: 13, weight: .light, design: .default))
                     .padding(.top, 20)
+                    .padding(.horizontal, 20)
                 
-                if self.selectedTab == tab {
-                    Color.black.frame(height: 2)
+                if selectedTab == tab {
+                    Color.red
+                        .frame(height: 2)
+                        .cornerRadius(.infinity)
                         .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
                 } else {
-                    Color.clear.frame(height: 2)
+                    Color.clear
+                        .frame(height: 2)
                 }
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
@@ -70,54 +74,58 @@ public struct CITTopTabBarView: View {
         .buttonStyle(.plain)
     }
     
-    var view1: some View {
-        Color.red.opacity(0.2).edgesIgnoringSafeArea(.all)
-    }
     
-    var view2: some View {
-        Color.blue.opacity(0.2).edgesIgnoringSafeArea(.all)
-    }
-    
-    var view3: some View {
-        Color.yellow.opacity(0.2).edgesIgnoringSafeArea(.all)
-    }
 
     
-//    public var body: some View {
-//        ScrollView(.horizontal, showsIndicators: false) {
-//            HStack(alignment: .center, spacing: 0) {
-//                ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
+    public var body: some View {
+//        VStack(spacing: 0) {
+//            Color(UIColor.systemGray5)
+            tabBar
+//        }
+//        .edgesIgnoringSafeArea(.top)
+    }
+    
+    var tabBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .center, spacing: 0) {
+                ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
+                    navBarItem(string: item.title, tab: index)
+                    
+                    
 //                    Button(action: { selectTab(index) }) {
 //                        VStack(spacing: 0) {
 //                            Text(item.title)
 //                                .padding()
 //
-//                            optionalSelector(at: index)
-//                                .animation(.easeOut(duration: 0.2))
+////                            optionalSelector(at: index)
 //                        }
+//                        .animation(.spring(), value: $selectedTab.wrappedValue)
 //                    }
-//                }
-//            }
-//            .background(Color(UIColor.systemGray5))
-////            .animation(.easeOut(duration: 0.2))
+                }
+            }
+            .padding(.top, 60)
+            .background(
+                Color(UIColor.systemGray5).padding(.horizontal, -UIScreen.main.bounds.width)
+            )
+        }
+        .edgesIgnoringSafeArea(.top)
+    }
+    
+    
+//    @ViewBuilder
+//    private func optionalSelector(at index: Int) -> some View {
+//        if selectedTab == index {
+//            Color.red
+//                .frame(height: 5)
+//                .cornerRadius(.infinity)
+//                .matchedGeometryEffect(id: "underline", in: namespace)
+//                .animation(.easeOut(duration: 2))
+//        } else {
+//            Color.clear
+//                .frame(height: 5)
+//                .animation(.easeOut(duration: 4))
 //        }
 //    }
-    
-    
-    @ViewBuilder
-    private func optionalSelector(at index: Int) -> some View {
-        if selectedTab == index {
-            Color.red
-                .frame(height: 5)
-                .cornerRadius(.infinity)
-                .matchedGeometryEffect(id: "indicator", in: namespace)
-                .animation(.easeOut(duration: 2))
-        } else {
-            Color.clear
-                .frame(height: 5)
-                .animation(.easeOut(duration: 4))
-        }
-    }
     
     private func selectTab(_ index: Int) {
         print("[TEST] Set selected tab to \(index)")
