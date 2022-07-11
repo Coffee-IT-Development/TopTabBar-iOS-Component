@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct CITTopTabBarView: View {
-    @Namespace private var animation
+    @Namespace private var namespace
     @Binding var selectedTab: Int
     @Binding var tabs: [CITTopTab]
     
@@ -17,14 +17,12 @@ public struct CITTopTabBarView: View {
         self._tabs = tabs
     }
     
-    @State var currentTab: Int = 0
-    @Namespace var namespace
     
     public var body: some View {
         VStack(spacing: 0) {
             navigationBarView
                         
-            TabView(selection: self.$currentTab, content: {
+            TabView(selection: self.$selectedTab, content: {
                 view1.tag(0)
                 view2.tag(1)
                 view3.tag(2)
@@ -53,21 +51,21 @@ public struct CITTopTabBarView: View {
     
     func navBarItem(string: String, tab: Int) -> some View {
         Button {
-            self.currentTab = tab
+            self.selectedTab = tab
         } label: {
             VStack {
                 Text(string)
                     .font(.system(size: 13, weight: .light, design: .default))
                     .padding(.top, 20)
                 
-                if self.currentTab == tab {
+                if self.selectedTab == tab {
                     Color.black.frame(height: 2)
                         .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
                 } else {
                     Color.clear.frame(height: 2)
                 }
             }
-            .animation(.spring(), value: currentTab)
+            .animation(.spring(), value: $selectedTab.wrappedValue)
         }
         .buttonStyle(.plain)
     }
@@ -112,7 +110,7 @@ public struct CITTopTabBarView: View {
             Color.red
                 .frame(height: 5)
                 .cornerRadius(.infinity)
-                .matchedGeometryEffect(id: "indicator", in: animation)
+                .matchedGeometryEffect(id: "indicator", in: namespace)
                 .animation(.easeOut(duration: 2))
         } else {
             Color.clear
@@ -133,12 +131,10 @@ struct CITTopTabBarView_Previews: PreviewProvider {
             .init(title: "Long Example"),
             .init(title: "Movies"),
             .init(title: "Books"),
-            .init(title: "Music"),
-            .init(title: "Movies"),
-            .init(title: "Books"),
-            .init(title: "Music"),
-            .init(title: "Movies"),
-            .init(title: "Books")
+            .init(title: "Sports"),
+            .init(title: "Series"),
+            .init(title: "Films"),
+            .init(title: "Fun"),
         ]))
     }
 }
