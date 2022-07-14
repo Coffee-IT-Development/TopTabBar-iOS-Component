@@ -12,7 +12,69 @@ import SwiftUI
 public struct CITTopTabBarConfig {
     public var backgroundColor = Color(UIColor.systemGray5)
     
+    public var selectedBackgroundColor = Color(UIColor.systemGray5)
+    
+    public var textColor = Color.black.opacity(0.3)
+    
+    public var selectedTextColor = Color.red
+    
     public var displayMode: CITTopTabBarDisplayMode = .atTopOfScreen(topPadding: 50)
+    
+    public var font: Font = .system(size: 13, weight: .light, design: .default)
+    
+//Requirements:
+//
+//Colors:
+//
+//inactiveColor
+//
+//selectedColor
+//
+    
+    
+    
+//Optional backgroundcolor
+//
+//Borderless style implementation
+//
+    
+    
+//Selection indicator:
+//
+//has selectedColor
+//
+//centered below highlighted option
+//
+//has full or partial width of tab
+//
+//stays loyal to position selectedTab, but no further right than center of screen
+//
+//will stay at the position of selectedTab even when scrolling, until a different tab is selected
+//
+//animates between previously selected tab and current selected tab on tap
+//
+    
+    
+//Content view should also be swipe-able (optional)
+//
+//viewmodifier
+//
+    
+    
+//Accessability label per tab
+//
+//Tab object with label per tab
+//
+    
+    
+//Notification badge (optional)
+//
+//With number (optional)
+//
+//color
+    
+    
+    
 }
 
 extension CITTopTabBarConfig {

@@ -27,7 +27,13 @@ public struct CITTopTabBarView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
                 ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                    navBarItem(index, item)
+                    CITTopTabView(
+                        index: index,
+                        item: item,
+                        config: config,
+                        namespace: namespace,
+                        selectedTab: $selectedTab
+                    )
                 }
             }
             .padding(.top, config.topPadding)
@@ -37,19 +43,6 @@ public struct CITTopTabBarView: View {
             )
         }
         .optionalIgnoreEdges(edges: .top, active: config.showAtTopOfScreen)
-    }
-    
-    private func navBarItem(_ index: Int, _ item: CITTopTab) -> some View {
-        Button {
-            selectedTab = index
-        } label: {
-            VStack {
-                tabContent(for: item)
-                optionalIndicator(at: index)
-            }
-            .animation(.spring(), value: $selectedTab.wrappedValue)
-        }
-        .buttonStyle(.plain)
     }
 }
 
