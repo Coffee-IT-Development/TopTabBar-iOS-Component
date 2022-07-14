@@ -24,23 +24,31 @@ public struct CITTopTabBarView: View {
     }
     
     public var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 0) {
-                ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                    CITTopTabView(
-                        index: index,
-                        item: item,
-                        config: config,
-                        namespace: namespace,
-                        selectedTab: $selectedTab
-                    )
+        ScrollViewReader { value in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
+                    ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
+                        CITTopTabView(
+                            index: index,
+                            item: item,
+                            config: config,
+                            namespace: namespace,
+                            selectedTab: $selectedTab
+                        )
+                        .id(index)
+                    }
+                }
+                .padding(.top, config.topPadding)
+                .background(
+                    config.backgroundColor
+                        .padding(.horizontal, -UIScreen.main.bounds.width)
+                )
+                .onChange(of: selectedTab) { tab in
+                    withAnimation {
+                        value.scrollTo(tab, anchor: .center)
+                    }
                 }
             }
-            .padding(.top, config.topPadding)
-            .background(
-                config.backgroundColor
-                    .padding(.horizontal, -UIScreen.main.bounds.width)
-            )
         }
         .optionalIgnoreEdges(edges: .top, active: config.showAtTopOfScreen)
     }

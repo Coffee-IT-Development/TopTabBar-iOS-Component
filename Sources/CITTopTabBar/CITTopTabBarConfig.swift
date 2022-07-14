@@ -47,11 +47,11 @@ public struct CITTopTabBarConfig {
 //
 // V has selectedColor
 //
-//   centered below highlighted option
+// V centered below highlighted option
 //
 // V has full or partial width of tab
 //
-//   stays loyal to position selectedTab, but no further right than center of screen
+// V stays loyal to position selectedTab, but no further right than center of screen
 //
 // V will stay at the position of selectedTab even when scrolling, until a different tab is selected
 //
