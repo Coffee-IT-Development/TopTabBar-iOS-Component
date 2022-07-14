@@ -24,7 +24,7 @@ public struct CITTopTabBarConfig {
     
     public var tabBarInsets: EdgeInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
     
-    public var contentInsets: EdgeInsets = .init(top: 5, leading: 0, bottom: 5, trailing: 0)
+    public var contentInsets: EdgeInsets = .init(top: 5, leading: 10, bottom: 5, trailing: 10)
     
     public var underlineInsets: EdgeInsets = .zero//.init(top: 0, leading: 10, bottom: 10, trailing: 10)
     
@@ -42,21 +42,11 @@ public struct CITTopTabBarConfig {
     
     public var backgroundCornerRadius: CGFloat = 0//.infinity
     
+    public var titleToBadgeSpacing: CGFloat = 8
+    
     public var verticalSelectedInset: CGFloat {
         selectedInsets.bottom + selectedInsets.top
     }
-
-    
-//Notification badge (optional)
-//
-// With number (optional)
-//
-// Trailing and leading option.
-//
-// color
-    
-    
-    
 }
 
 extension CITTopTabBarConfig {

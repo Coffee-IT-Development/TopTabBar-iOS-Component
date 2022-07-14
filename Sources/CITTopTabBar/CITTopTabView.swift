@@ -43,12 +43,21 @@ struct CITTopTabView: View {
     }
     
     var content: some View {
-        Text(item.title)
-            .font(config.font)
-            .foregroundColor(.white)
-            .colorMultiply(textColor)
-            .padding(.horizontal, 20)
-            .animation(.easeInOut(duration: 0.3))
+        HStack(spacing: config.titleToBadgeSpacing) {
+            if let badge = item.badge, badge.style.position == .leading {
+                CITTopTabBadgeView(badge: badge)
+            }
+            
+            Text(item.title)
+                .font(config.font)
+                .foregroundColor(.white)
+                .colorMultiply(textColor)
+                .animation(.easeInOut(duration: 0.3)) // TODO: Allow change text animation?
+            
+            if let badge = item.badge, badge.style.position == .trailing {
+                CITTopTabBadgeView(badge: badge)
+            }
+        }
     }
     
     @ViewBuilder
