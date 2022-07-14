@@ -27,6 +27,7 @@ struct CITTopTabView: View {
                     content
                     optionalUnderline
                 }
+                .padding(isSelected ? config.selectedInsets : .zero)
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
             .background(reader)
@@ -73,7 +74,7 @@ struct CITTopTabView: View {
         GeometryReader { proxy in
             Color.clear
                 .onAppear {
-                    calcHeight = proxy.size.height
+                    calcHeight = isSelected ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
                 }
         }
     }

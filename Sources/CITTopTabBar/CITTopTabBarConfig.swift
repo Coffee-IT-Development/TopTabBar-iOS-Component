@@ -22,11 +22,15 @@ public struct CITTopTabBarConfig {
     
     public var font: Font = .system(size: 13, weight: .light, design: .default)
     
-    public var underlineInsets: EdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+    public var underlineInsets: EdgeInsets = .zero
+    
+    public var selectedInsets: EdgeInsets = .init(top: 0, leading: 5, bottom: 10, trailing: 5)
     
     public var showUnderline = true
     
-    
+    public var verticalSelectedInset: CGFloat {
+        selectedInsets.bottom + selectedInsets.top
+    }
     
     // For free on tour:
     //
@@ -111,4 +115,10 @@ public enum CITTopTabBarDisplayMode: Equatable {
 
 extension CITTopTabBarConfig {
     public static var example = CITTopTabBarConfig()
+}
+
+extension EdgeInsets {
+    static var zero: EdgeInsets {
+        .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+    }
 }
