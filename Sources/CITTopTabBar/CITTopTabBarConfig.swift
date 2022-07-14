@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// The CITTopTabBarConfig provides most of the static attributes of the CITTopTabBarView as a single object, incl.  fonts, colors, tabs and indicator options.
+/// The CITTopTabBarConfig provides most of the static attributes of the CITTopTabBarView as a single object, incl.  fonts, colors, tabs and underline options.
 /// It can also be used dynamically with @State if desired, e.g. to animate cellSize, cornerRadius or colors.
 public struct CITTopTabBarConfig {
     public var backgroundColor = Color(UIColor.systemGray5)
@@ -22,8 +22,9 @@ public struct CITTopTabBarConfig {
     
     public var font: Font = .system(size: 13, weight: .light, design: .default)
     
-    // indicator padding ------- default zero
+    public var underlineInsets: EdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
     
+    public var showUnderline = true
     
     
     
@@ -35,7 +36,7 @@ public struct CITTopTabBarConfig {
     //
     // - Overall cornerRadius
     //
-    // Indicator opacity / Show underline boolean.
+    // underline opacity / Show underline boolean.
     
 //Optional backgroundcolor
 //
@@ -43,7 +44,7 @@ public struct CITTopTabBarConfig {
 //
     
     
-//Selection indicator:
+//Selection underline:
 //
 // V has selectedColor
 //

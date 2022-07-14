@@ -25,7 +25,7 @@ struct CITTopTabView: View {
                 
                 VStack {
                     content
-                    optionalIndicator
+                    optionalUnderline
                 }
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
@@ -45,12 +45,12 @@ struct CITTopTabView: View {
     }
     
     @ViewBuilder
-    var optionalIndicator: some View {
+    var optionalUnderline: some View {
         if isSelected {
             Color.red
                 .frame(height: 2)
                 .cornerRadius(.infinity)
-                .matchedGeometryEffect(id: "indicator", in: namespace, properties: .frame)
+                .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
         } else {
             Color.clear
                 .frame(height: 2)
