@@ -21,19 +21,25 @@ struct CITTopTabView: View {
             selectedTab = index
         } label: {
             ZStack {
-                optionalBackground
+                optionalFullSizeBackground
                 
-                VStack {
-                    content
+                VStack(spacing: 0) {
+                    ZStack {
+                        optionalContentBackground
+                        content
+                            .padding(config.contentInsets)
+                            .background(optionalContentSizeReader)
+                    }
                     optionalUnderline
                 }
                 .padding(isSelected ? config.selectedInsets : .zero)
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
-            .background(reader)
+            .background(optionalFullSizeReader)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(item.title)
     }
     
     var content: some View {
@@ -41,7 +47,6 @@ struct CITTopTabView: View {
             .font(config.font)
             .foregroundColor(.white)
             .colorMultiply(textColor)
-            .padding(.top, 20)
             .padding(.horizontal, 20)
             .animation(.easeInOut(duration: 0.3))
     }
@@ -49,15 +54,30 @@ struct CITTopTabView: View {
     @ViewBuilder
     var optionalUnderline: some View {
         if isSelected && config.showUnderline {
-            Color.red
-                .frame(height: 2)
-                .cornerRadius(.infinity)
+            config.underlineColor
+                .frame(height: config.underlineHeight)
+                .cornerRadius(config.underlineCornerRadius)
                 .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
                 .padding(config.underlineInsets)
         } else {
             Color.clear
-                .frame(height: 2)
+                .frame(height: config.underlineHeight)
                 .padding(config.underlineInsets)
+        }
+    }
+    
+    @ViewBuilder
+    var optionalFullSizeBackground: some View {
+        if config.showUnderline {
+            optionalBackground
+        }
+    }
+    
+    
+    @ViewBuilder
+    var optionalContentBackground: some View {
+        if !config.showUnderline {
+            optionalBackground
         }
     }
     
@@ -66,7 +86,23 @@ struct CITTopTabView: View {
         if isSelected {
             config.selectedBackgroundColor
                 .frame(height: calcHeight)
+                .cornerRadius(config.backgroundCornerRadius)
+                .padding(config.backgroundInsets)
                 .matchedGeometryEffect(id: "background", in: namespace)
+        }
+    }
+    
+    @ViewBuilder
+    var optionalFullSizeReader: some View {
+        if config.showUnderline {
+            reader
+        }
+    }
+    
+    @ViewBuilder
+    var optionalContentSizeReader: some View {
+        if !config.showUnderline {
+            reader
         }
     }
     

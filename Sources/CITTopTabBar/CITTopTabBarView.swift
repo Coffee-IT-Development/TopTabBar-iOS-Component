@@ -38,7 +38,8 @@ public struct CITTopTabBarView: View {
                         .id(index)
                     }
                 }
-                .padding(.top, config.topPadding)
+                .padding(.top, config.ignoreSafeEdgeTopPadding)
+                .padding(config.tabBarInsets)
                 .background(
                     config.backgroundColor
                         .padding(.horizontal, -UIScreen.main.bounds.width)

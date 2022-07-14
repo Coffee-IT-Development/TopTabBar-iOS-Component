@@ -10,9 +10,9 @@ import SwiftUI
 /// The CITTopTabBarConfig provides most of the static attributes of the CITTopTabBarView as a single object, incl.  fonts, colors, tabs and underline options.
 /// It can also be used dynamically with @State if desired, e.g. to animate cellSize, cornerRadius or colors.
 public struct CITTopTabBarConfig {
-    public var backgroundColor = Color(UIColor.systemGray5)
+    public var backgroundColor: Color = .clear//Color(UIColor.systemGray5)
     
-    public var selectedBackgroundColor = Color.red.opacity(0.2)
+    public var selectedBackgroundColor: Color = .clear//.red.opacity(0.2) // Defaults to backgroundColor
     
     public var textColor = Color.black.opacity(0.3)
     
@@ -22,59 +22,30 @@ public struct CITTopTabBarConfig {
     
     public var font: Font = .system(size: 13, weight: .light, design: .default)
     
-    public var underlineInsets: EdgeInsets = .zero
+    public var tabBarInsets: EdgeInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
     
-    public var selectedInsets: EdgeInsets = .init(top: 0, leading: 5, bottom: 10, trailing: 5)
+    public var contentInsets: EdgeInsets = .init(top: 5, leading: 0, bottom: 5, trailing: 0)
+    
+    public var underlineInsets: EdgeInsets = .zero//.init(top: 0, leading: 10, bottom: 10, trailing: 10)
+    
+    public var selectedInsets: EdgeInsets = .zero//.init(top: 0, leading: 0, bottom: 10, trailing: 0)
+    
+    public var backgroundInsets: EdgeInsets = .zero//.init(top: 10, leading: 10, bottom: 10, trailing: 10)
     
     public var showUnderline = true
+    
+    public var underlineColor = Color.red // Defaults to selectedTextColor
+    
+    public var underlineHeight: CGFloat = 2
+    
+    public var underlineCornerRadius: CGFloat = .infinity
+    
+    public var backgroundCornerRadius: CGFloat = 0//.infinity
     
     public var verticalSelectedInset: CGFloat {
         selectedInsets.bottom + selectedInsets.top
     }
-    
-    // For free on tour:
-    //
-    // Background options:
-    // - background padding
-    // - background cornerRadius
-    //
-    // - Overall cornerRadius
-    //
-    // underline opacity / Show underline boolean.
-    
-//Optional backgroundcolor
-//
-//Borderless style implementation
-//
-    
-    
-//Selection underline:
-//
-// V has selectedColor
-//
-// V centered below highlighted option
-//
-// V has full or partial width of tab
-//
-// V stays loyal to position selectedTab, but no further right than center of screen
-//
-// V will stay at the position of selectedTab even when scrolling, until a different tab is selected
-//
-// V animates between previously selected tab and current selected tab on tap
-//
-    
-    
-// V Content view should also be swipe-able (optional)
-//
-// viewmodifier (not needed, handled by tab view, show in example)
-//
-    
-    
-//Accessability label per tab
-//
-//Tab object with label per tab
-//
-    
+
     
 //Notification badge (optional)
 //
@@ -82,14 +53,14 @@ public struct CITTopTabBarConfig {
 //
 // Trailing and leading option.
 //
-//color
+// color
     
     
     
 }
 
 extension CITTopTabBarConfig {
-    public var topPadding: CGFloat {
+    public var ignoreSafeEdgeTopPadding: CGFloat {
         switch displayMode {
         case let .atTopOfScreen(padding):
             return padding
