@@ -30,6 +30,7 @@ struct CITTopTabView: View {
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
             .background(reader)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
