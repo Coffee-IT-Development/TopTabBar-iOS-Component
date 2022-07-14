@@ -14,16 +14,22 @@ struct CITTopTabView: View {
     let namespace: Namespace.ID
     @Binding var selectedTab: Int
     
+    @State private var calcHeight: CGFloat = 0
+    
     var body: some View {
         Button {
             selectedTab = index
         } label: {
-            VStack {
-                content
-                optionalIndicator
+            ZStack {
+                optionalBackground
+                
+                VStack {
+                    content
+                    optionalIndicator
+                }
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
-            .background(optionalBackground)
+            .background(reader)
         }
         .buttonStyle(.plain)
     }
@@ -31,9 +37,11 @@ struct CITTopTabView: View {
     var content: some View {
         Text(item.title)
             .font(config.font)
-            .foregroundColor(textColor)
+            .foregroundColor(.white)
+            .colorMultiply(textColor)
             .padding(.top, 20)
             .padding(.horizontal, 20)
+            .animation(.easeInOut(duration: 0.3))
     }
     
     @ViewBuilder
@@ -53,6 +61,17 @@ struct CITTopTabView: View {
     var optionalBackground: some View {
         if isSelected {
             config.selectedBackgroundColor
+                .frame(height: calcHeight)
+                .matchedGeometryEffect(id: "background", in: namespace)
+        }
+    }
+    
+    var reader: some View {
+        GeometryReader { proxy in
+            Color.clear
+                .onAppear {
+                    calcHeight = proxy.size.height
+                }
         }
     }
 }

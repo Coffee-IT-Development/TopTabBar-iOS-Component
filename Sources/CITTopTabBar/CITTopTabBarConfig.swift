@@ -12,7 +12,7 @@ import SwiftUI
 public struct CITTopTabBarConfig {
     public var backgroundColor = Color(UIColor.systemGray5)
     
-    public var selectedBackgroundColor = Color(UIColor.systemGray5)
+    public var selectedBackgroundColor = Color.red.opacity(0.2)
     
     public var textColor = Color.black.opacity(0.3)
     
@@ -21,6 +21,17 @@ public struct CITTopTabBarConfig {
     public var displayMode: CITTopTabBarDisplayMode = .atTopOfScreen(topPadding: 50)
     
     public var font: Font = .system(size: 13, weight: .light, design: .default)
+    
+    
+    // For free on tour:
+    //
+    // Background options:
+    // - background padding
+    // - background cornerRadius
+    //
+    // - Overall cornerRadius
+    //
+    // Indicator opacity / Show underline boolean.
     
 //Requirements:
 //
