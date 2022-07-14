@@ -47,14 +47,16 @@ struct CITTopTabView: View {
     
     @ViewBuilder
     var optionalUnderline: some View {
-        if isSelected {
+        if isSelected && config.showUnderline {
             Color.red
                 .frame(height: 2)
                 .cornerRadius(.infinity)
                 .matchedGeometryEffect(id: "underline", in: namespace, properties: .frame)
+                .padding(config.underlineInsets)
         } else {
             Color.clear
                 .frame(height: 2)
+                .padding(config.underlineInsets)
         }
     }
     
