@@ -22,6 +22,10 @@ public struct CITTopTabBarConfig {
     
     public var font: Font = .system(size: 13, weight: .light, design: .default)
     
+    // indicator padding ------- default zero
+    
+    
+    
     
     // For free on tour:
     //
@@ -33,17 +37,6 @@ public struct CITTopTabBarConfig {
     //
     // Indicator opacity / Show underline boolean.
     
-//Requirements:
-//
-//Colors:
-//
-//inactiveColor
-//
-//selectedColor
-//
-    
-    
-    
 //Optional backgroundcolor
 //
 //Borderless style implementation
@@ -52,23 +45,23 @@ public struct CITTopTabBarConfig {
     
 //Selection indicator:
 //
-//has selectedColor
+// V has selectedColor
 //
-//centered below highlighted option
+//   centered below highlighted option
 //
-//has full or partial width of tab
+// V has full or partial width of tab
 //
-//stays loyal to position selectedTab, but no further right than center of screen
+//   stays loyal to position selectedTab, but no further right than center of screen
 //
-//will stay at the position of selectedTab even when scrolling, until a different tab is selected
+// V will stay at the position of selectedTab even when scrolling, until a different tab is selected
 //
-//animates between previously selected tab and current selected tab on tap
+// V animates between previously selected tab and current selected tab on tap
 //
     
     
-//Content view should also be swipe-able (optional)
+// V Content view should also be swipe-able (optional)
 //
-//viewmodifier
+// viewmodifier (not needed, handled by tab view, show in example)
 //
     
     
@@ -80,7 +73,9 @@ public struct CITTopTabBarConfig {
     
 //Notification badge (optional)
 //
-//With number (optional)
+// With number (optional)
+//
+// Trailing and leading option.
 //
 //color
     
