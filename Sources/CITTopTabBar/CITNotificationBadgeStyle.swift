@@ -11,6 +11,7 @@ public struct CITNotificationBadgeStyle: Equatable {
     public let color: Color
     public let size: CGSize
     public let position: CITNotificationBadgePosition
+    public let contentInsets: EdgeInsets
     public let amount: CGFloat?
     public let roundToInt: Bool
     public let font: Font
@@ -20,6 +21,7 @@ public struct CITNotificationBadgeStyle: Equatable {
         color: Color,
         size: CGSize = CITNotificationBadgeStyle.defaultSize,
         position: CITNotificationBadgePosition = CITNotificationBadgeStyle.defaultPosition,
+        contentInsets: EdgeInsets = .zero,
         amount: CGFloat? = nil,
         roundToInt: Bool = true,
         font: Font? = nil,
@@ -28,6 +30,7 @@ public struct CITNotificationBadgeStyle: Equatable {
         self.color = color
         self.size = size
         self.position = position
+        self.contentInsets = contentInsets
         self.amount = amount
         self.roundToInt = roundToInt
         self.font = font ?? .system(size: size.height - 2)

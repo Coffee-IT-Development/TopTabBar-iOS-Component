@@ -10,7 +10,7 @@ import SwiftUI
 /// The CITTopTabBarConfig provides most of the static attributes of the CITTopTabBarView as a single object, incl.  fonts, colors, tabs and underline options.
 /// It can also be used dynamically with @State if desired, e.g. to animate cellSize, cornerRadius or colors.
 public struct CITTopTabBarConfig {
-    public var backgroundColor: Color = .clear//Color(UIColor.systemGray5)
+    public var backgroundColor: Color = Color(UIColor.systemGray5)
     
     public var selectedBackgroundColor: Color = .clear//.red.opacity(0.2) // Defaults to backgroundColor
     
@@ -79,7 +79,7 @@ extension CITTopTabBarConfig {
 }
 
 extension EdgeInsets {
-    static var zero: EdgeInsets {
+    public static var zero: EdgeInsets {
         .init(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
 }

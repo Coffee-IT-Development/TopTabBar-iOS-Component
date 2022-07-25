@@ -45,7 +45,7 @@ struct CITTopTabView: View {
     var content: some View {
         HStack(spacing: config.titleToBadgeSpacing) {
             if let badge = item.badge, badge.style.position == .leading {
-                CITTopTabBadgeView(badge: badge)
+                CITNotificationBadgeView(badge: badge)
             }
             
             Text(item.title)
@@ -55,7 +55,7 @@ struct CITTopTabView: View {
                 .animation(.easeInOut(duration: 0.3)) // TODO: Allow change text animation?
             
             if let badge = item.badge, badge.style.position == .trailing {
-                CITTopTabBadgeView(badge: badge)
+                CITNotificationBadgeView(badge: badge)
             }
         }
     }
