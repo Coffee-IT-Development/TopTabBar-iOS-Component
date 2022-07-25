@@ -27,7 +27,7 @@ struct CITTopTabView: View {
                     ZStack {
                         optionalContentBackground
                         content
-                            .padding(config.contentInsets)
+                            .padding(config.tabContentInsets)
                             .background(optionalContentSizeReader)
                     }
                     optionalUnderline
@@ -95,8 +95,8 @@ struct CITTopTabView: View {
         if isSelected {
             config.selectedBackgroundColor
                 .frame(height: calcHeight)
-                .cornerRadius(config.backgroundCornerRadius)
-                .padding(config.backgroundInsets)
+                .cornerRadius(config.selectedBackgroundCornerRadius)
+                .padding(config.selectedBackgroundInsets)
                 .matchedGeometryEffect(id: "background", in: namespace)
         }
     }

@@ -78,7 +78,7 @@ struct CITTopTabBarView_Previews: PreviewProvider {
                 .init(title: "Series"),
                 .init(title: "Films"),
                 .init(title: "Fun"),
-            ]), config: .example)
+            ]), config: .exampleUnderlined)
             
             Spacer()
         }
