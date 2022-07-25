@@ -13,6 +13,8 @@ public struct CITTopTabBarView: View {
     @Binding var tabs: [CITTopTab]
     private var config: CITTopTabBarConfig
     
+    @State private var safeTopInsetNegation: CGFloat = 0
+    
     public init(
         selectedTab: Binding<Int>,
         tabs: Binding<[CITTopTab]>,
@@ -52,6 +54,16 @@ public struct CITTopTabBarView: View {
             }
         }
         .optionalIgnoreEdges(edges: .top, active: config.showAtTopOfScreen)
+        .padding(.bottom, -safeTopInsetNegation)
+        .background(
+            GeometryReader { proxy in
+                Color.clear.onAppear {
+                    if config.showAtTopOfScreen {
+                        safeTopInsetNegation = proxy.safeAreaInsets.top
+                    }
+                }
+            }
+        )
     }
 }
 
