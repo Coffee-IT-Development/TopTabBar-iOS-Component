@@ -79,10 +79,10 @@ public struct CITTopTabBarConfig {
     }
     
     init(
-        backgroundColor: Color = Color(UIColor.systemGray5),
+        backgroundColor: Color = .blue,
         selectedBackgroundColor: Color = .clear,
-        textColor: Color = .black.opacity(0.3),
-        selectedTextColor: Color = .red,
+        textColor: Color = .white.opacity(0.5),
+        selectedTextColor: Color = .white,
         displayMode: CITTopTabBarDisplayMode = .atTopOfScreen(topPadding: 50),
         font: Font = .system(size: 13, weight: .light, design: .default),
         tabBarInsets: EdgeInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16),
@@ -147,5 +147,5 @@ extension CITTopTabBarConfig {
     public static var exampleAnimatedSelectionInset = CITTopTabBarConfig(selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0))
     
     /// Warning: the selectedBackgroundColor does not seem to display correctly in the Xcode Canvas preview, but it does work as intended at runtime on a physical device.
-    public static var examplePillShaped = CITTopTabBarConfig(backgroundColor: .clear, selectedBackgroundColor: .red.opacity(0.2), showUnderline: false, selectedBackgroundCornerRadius: .infinity)
+    public static var examplePillShaped = CITTopTabBarConfig(backgroundColor: .clear, selectedBackgroundColor: .white.opacity(0.2), showUnderline: false, selectedBackgroundCornerRadius: .infinity)
 }
