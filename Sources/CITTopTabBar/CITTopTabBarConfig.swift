@@ -143,7 +143,7 @@ public enum CITTopTabBarDisplayMode: Equatable {
 
 extension CITTopTabBarConfig {
     public static var exampleUnderlined = CITTopTabBarConfig()
-    public static var exampleAnimatedSelection = CITTopTabBarConfig(selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0))
+    public static var exampleAnimatedSelectionInset = CITTopTabBarConfig(selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0))
     public static var examplePillShaped = CITTopTabBarConfig(backgroundColor: .clear, selectedBackgroundColor: .red.opacity(0.2), showUnderline: false, selectedBackgroundCornerRadius: .infinity)
 }
 

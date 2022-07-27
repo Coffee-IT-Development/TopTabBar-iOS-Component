@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-struct CITTopTabView: View {
-    let index: Int
-    let item: CITTopTab
-    let config: CITTopTabBarConfig
-    let namespace: Namespace.ID
-    @Binding var selectedTab: Int
+/// The CITTopTabView is meant for internal use. Please use the CITTopTabBarView to use this component.
+/// Mulitple instances of CITTopTabView will be displayed based on the amount of tabs passed to the CITTopTabBarView.
+/// This class is still made public so it can be previewed using the Canvas if desired.
+public struct CITTopTabView: View {
+    public let index: Int
+    public let item: CITTopTab
+    public let config: CITTopTabBarConfig
+    public let namespace: Namespace.ID
+    @Binding public var selectedTab: Int
     
     @State private var calcHeight: CGFloat = 0
     
-    var body: some View {
+    public var body: some View {
         Button {
             selectedTab = index
         } label: {
@@ -132,5 +135,13 @@ extension CITTopTabView {
     
     var textColor: Color {
         isSelected ? config.selectedTextColor : config.textColor
+    }
+}
+
+public struct CITTopTabView_Previews: PreviewProvider {
+    @Namespace static var namespace
+    
+    public static var previews: some View {
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .exampleUnderlined, namespace: namespace, selectedTab: .constant(0))
     }
 }

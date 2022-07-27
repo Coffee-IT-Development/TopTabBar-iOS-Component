@@ -39,5 +39,6 @@ public struct CITNotificationBadgeStyle: Equatable {
     
     public static var defaultSize = CGSize(width: 12, height: 12)
     public static var defaultPosition = CITNotificationBadgePosition.trailing
+    public static var example = CITNotificationBadgeStyle(color: .red)
     public static var none = CITNotificationBadgeStyle(color: .clear, size: .zero)
 }

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CITOptionalIgnoreEdges: ViewModifier {
+public struct CITOptionalIgnoreEdges: ViewModifier {
     var edges: Edge.Set
     var active: Bool
 
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         if active {
             content.edgesIgnoringSafeArea(edges)
         } else {
@@ -21,7 +21,7 @@ struct CITOptionalIgnoreEdges: ViewModifier {
 }
 
 extension View {
-    func optionalIgnoreEdges(edges: Edge.Set, active: Bool) -> some View {
+    public func optionalIgnoreEdges(edges: Edge.Set, active: Bool) -> some View {
         modifier(CITOptionalIgnoreEdges(edges: edges, active: active))
     }
 }

@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct CITNotificationBadgeView: View {
-    let badge: CITNotificationBadge
+public struct CITNotificationBadgeView: View {
+    public let badge: CITNotificationBadge
     
-    var body: some View {
+    public var body: some View {
         Text(badge.amountText)
             .font(badge.style.font)
             .foregroundColor(badge.style.textColor)
@@ -20,5 +20,15 @@ struct CITNotificationBadgeView: View {
             .padding(badge.style.contentInsets)
             .background(badge.style.color)
             .cornerRadius(.infinity)
+    }
+}
+
+public struct CITNotificationBadgeView_Previews: PreviewProvider {
+    public static var previews: some View {
+        HStack {
+            CITNotificationBadgeView(badge: .circle(style: .example))
+            CITNotificationBadgeView(badge: .circle(style: .init(color: .blue)))
+            CITNotificationBadgeView(badge: .circle(style: .init(color: .gray, contentInsets: .init(top: 3, leading: 3, bottom: 3, trailing: 3), amount: 12)))
+        }
     }
 }

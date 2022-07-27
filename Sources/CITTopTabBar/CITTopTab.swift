@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The CITTopTab is an object that holds info about the contents of the tab, such as the title and the visual logic of the notification badge to be displayed if any.
 public struct CITTopTab: Identifiable, Hashable {
     public var id = UUID()
     public var title: String
