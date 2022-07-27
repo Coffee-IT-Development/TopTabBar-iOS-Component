@@ -8,6 +8,10 @@ The CITTopTabBar package provides a tab bar with several customisation options a
 
 ## Usage
 
+You can use the CITTopTabBarRunnable workspace to test the component directly.
+
+OR
+
 Import CITTopTabBar and add a CITTopTabBarView to your SwiftUI view.
 Best used in combination with a page style TabView.
 
@@ -20,7 +24,7 @@ struct ContentView: View {
     @State var tabs: [CITTopTab] = [
         .init(title: "Long Example", badge: .circle(style: .init(color: .red))),
         .init(title: "Books"),
-        .init(title: "Sports", badge: .circle(style: .init(color: .blue, position: .leading))),
+        .init(title: "Sports", badge: .circle(style: .init(color: .green, position: .leading))),
         .init(title: "Series"),
         .init(title: "Films"),
         .init(title: "Fun"),
