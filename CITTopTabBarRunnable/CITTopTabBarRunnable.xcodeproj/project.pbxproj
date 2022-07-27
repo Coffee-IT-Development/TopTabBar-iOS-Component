@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		81C860352891B8510090D43F /* CITTopTabBar in Frameworks */ = {isa = PBXBuildFile; productRef = 81C860342891B8510090D43F /* CITTopTabBar */; };
-		81C8603D2891B9010090D43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C860382891B9010090D43F /* Assets.xcassets */; };
-		81C8603E2891B9010090D43F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C8603A2891B9010090D43F /* Preview Assets.xcassets */; };
 		81C8603F2891B9010090D43F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8603B2891B9010090D43F /* ContentView.swift */; };
 		81C860402891B9010090D43F /* CITTopTabBarRunnableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8603C2891B9010090D43F /* CITTopTabBarRunnableApp.swift */; };
 /* End PBXBuildFile section */
@@ -18,8 +16,6 @@
 		81780BEC287C215A00788B3C /* CITTopTabBarRunnable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CITTopTabBarRunnable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C860332891B80C0090D43F /* CITTopTabBar */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CITTopTabBar; path = ..; sourceTree = "<group>"; };
 		81C860372891B9010090D43F /* CITTopTabBarRunnable.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = CITTopTabBarRunnable.entitlements; sourceTree = "<group>"; };
-		81C860382891B9010090D43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		81C8603A2891B9010090D43F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		81C8603B2891B9010090D43F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		81C8603C2891B9010090D43F /* CITTopTabBarRunnableApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CITTopTabBarRunnableApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,20 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				81C860372891B9010090D43F /* CITTopTabBarRunnable.entitlements */,
-				81C860382891B9010090D43F /* Assets.xcassets */,
-				81C860392891B9010090D43F /* Preview Content */,
 				81C8603B2891B9010090D43F /* ContentView.swift */,
 				81C8603C2891B9010090D43F /* CITTopTabBarRunnableApp.swift */,
 			);
 			path = CITTopTabBarRunnable;
-			sourceTree = "<group>";
-		};
-		81C860392891B9010090D43F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				81C8603A2891B9010090D43F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,8 +130,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C8603E2891B9010090D43F /* Preview Assets.xcassets in Resources */,
-				81C8603D2891B9010090D43F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +265,6 @@
 				CODE_SIGN_ENTITLEMENTS = CITTopTabBarRunnable/CITTopTabBarRunnable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CITTopTabBarRunnable/Preview Content\"";
 				DEVELOPMENT_TEAM = 93YW7YLH24;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -315,7 +298,6 @@
 				CODE_SIGN_ENTITLEMENTS = CITTopTabBarRunnable/CITTopTabBarRunnable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CITTopTabBarRunnable/Preview Content\"";
 				DEVELOPMENT_TEAM = 93YW7YLH24;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
