@@ -24,8 +24,5 @@ let package = Package(
         .target(
             name: "CITTopTabBar",
             dependencies: []),
-        .testTarget(
-            name: "CITTopTabBarTests",
-            dependencies: ["CITTopTabBar"]),
     ]
 )

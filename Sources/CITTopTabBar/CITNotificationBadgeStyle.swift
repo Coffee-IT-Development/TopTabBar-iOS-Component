@@ -21,7 +21,7 @@ public struct CITNotificationBadgeStyle: Equatable {
         color: Color,
         size: CGSize = CITNotificationBadgeStyle.defaultSize,
         position: CITNotificationBadgePosition = CITNotificationBadgeStyle.defaultPosition,
-        contentInsets: EdgeInsets = .zero,
+        contentInsets: EdgeInsets = CITEdgeInsets.zero,
         amount: CGFloat? = nil,
         roundToInt: Bool = true,
         font: Font? = nil,

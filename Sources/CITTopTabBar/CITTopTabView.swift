@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// The CITTopTabView is meant for internal use. Please use the CITTopTabBarView to use this component.
+/// The CITTopTabView is not meant for direct use. Please use the CITTopTabBarView for optimal results.
 /// Mulitple instances of CITTopTabView will be displayed based on the amount of tabs passed to the CITTopTabBarView.
 /// This class is still made public so it can be previewed using the Canvas if desired.
 public struct CITTopTabView: View {
@@ -35,7 +35,7 @@ public struct CITTopTabView: View {
                     }
                     optionalUnderline
                 }
-                .padding(isSelected ? config.selectedInsets : .zero)
+                .padding(isSelected ? config.selectedInsets : CITEdgeInsets.zero)
             }
             .animation(.spring(), value: $selectedTab.wrappedValue)
             .background(optionalFullSizeReader)
@@ -55,7 +55,7 @@ public struct CITTopTabView: View {
                 .font(config.font)
                 .foregroundColor(.white)
                 .colorMultiply(textColor)
-                .animation(.easeInOut(duration: 0.3)) // TODO: Allow change text animation?
+                .animation(.easeInOut(duration: 0.3))
             
             if let badge = item.badge, badge.style.position == .trailing {
                 CITNotificationBadgeView(badge: badge)
@@ -142,6 +142,6 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .exampleUnderlined, namespace: namespace, selectedTab: .constant(0))
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, namespace: namespace, selectedTab: .constant(0))
     }
 }
