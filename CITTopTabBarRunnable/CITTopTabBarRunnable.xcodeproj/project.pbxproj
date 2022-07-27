@@ -15,7 +15,6 @@
 /* Begin PBXFileReference section */
 		81780BEC287C215A00788B3C /* CITTopTabBarRunnable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CITTopTabBarRunnable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C860332891B80C0090D43F /* CITTopTabBar */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CITTopTabBar; path = ..; sourceTree = "<group>"; };
-		81C860372891B9010090D43F /* CITTopTabBarRunnable.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = CITTopTabBarRunnable.entitlements; sourceTree = "<group>"; };
 		81C8603B2891B9010090D43F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		81C8603C2891B9010090D43F /* CITTopTabBarRunnableApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CITTopTabBarRunnableApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,9 +59,8 @@
 		81C860362891B9010090D43F /* CITTopTabBarRunnable */ = {
 			isa = PBXGroup;
 			children = (
-				81C860372891B9010090D43F /* CITTopTabBarRunnable.entitlements */,
-				81C8603B2891B9010090D43F /* ContentView.swift */,
 				81C8603C2891B9010090D43F /* CITTopTabBarRunnableApp.swift */,
+				81C8603B2891B9010090D43F /* ContentView.swift */,
 			);
 			path = CITTopTabBarRunnable;
 			sourceTree = "<group>";
@@ -262,7 +260,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = CITTopTabBarRunnable/CITTopTabBarRunnable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93YW7YLH24;
@@ -295,7 +292,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = CITTopTabBarRunnable/CITTopTabBarRunnable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93YW7YLH24;
