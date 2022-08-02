@@ -1,15 +1,15 @@
 //
-//  ContentView.swift
-//  CITTopTabBarRunnable
+//  CITTopTabBarExampleView.swift
+//  CITTopTabBarExample
 //
-//  Created by Lex Brouwers on 11/07/2022.
+//  Created by Lex Brouwers on 02/08/2022.
 //  Copyright © 2022 Coffee IT. All rights reserved.
 //
 
 import SwiftUI
 import CITTopTabBar
 
-struct ContentView: View {
+struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
     @State var tabs: [CITTopTab] = [
         .init(title: "Long Example", badge: .circle(style: .init(color: .red))),
@@ -38,8 +38,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CITTopTabBarExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CITTopTabBarExampleView()
     }
 }
