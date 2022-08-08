@@ -12,7 +12,7 @@ import CITTopTabBar
 struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
     @State var tabs: [CITTopTab] = [
-        .init(title: "Long Example", badge: .circle(style: .init(color: .red))),
+        .init(title: "Long Example", badge: .circle(style: .init(color: .blue))),
         .init(title: "Books"),
         .init(title: "Sports", badge: .circle(style: .init(color: .green, position: .leading))),
         .init(title: "Series"),
@@ -35,6 +35,9 @@ struct CITTopTabBarExampleView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .edgesIgnoringSafeArea(.all)
         }
+        .background(Color.red)
+        .preferredColorScheme(.dark)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

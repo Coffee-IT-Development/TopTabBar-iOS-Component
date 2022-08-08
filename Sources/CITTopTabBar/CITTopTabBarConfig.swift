@@ -80,14 +80,14 @@ public struct CITTopTabBarConfig {
     }
     
     init(
-        backgroundColor: Color = .blue,
+        backgroundColor: Color = .black,
         selectedBackgroundColor: Color = .clear,
         textColor: Color = .white.opacity(0.5),
         selectedTextColor: Color = .white,
         displayMode: CITTopTabBarDisplayMode = .atTopOfScreen(topPadding: 50),
         font: Font = .system(size: 13, weight: .light, design: .default),
-        tabBarInsets: EdgeInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16),
-        tabContentInsets: EdgeInsets = .init(top: 5, leading: 10, bottom: 5, trailing: 10),
+        tabBarInsets: EdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
+        tabContentInsets: EdgeInsets = .init(top: 5, leading: 16, bottom: 5, trailing: 16),
         underlineInsets: EdgeInsets = CITEdgeInsets.zero,
         selectedInsets: EdgeInsets = CITEdgeInsets.zero,
         selectedBackgroundInsets: EdgeInsets = CITEdgeInsets.zero,
@@ -145,8 +145,8 @@ public enum CITTopTabBarDisplayMode: Equatable {
 
 extension CITTopTabBarConfig {
     public static var exampleUnderlined = CITTopTabBarConfig()
-    public static var exampleAnimatedSelectionInset = CITTopTabBarConfig(selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0))
+    public static var exampleAnimatedSelectionInset = CITTopTabBarConfig(tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16), selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0))
     
     /// Warning: the selectedBackgroundColor does not seem to display correctly in the Xcode Canvas preview, but it does work as intended at runtime on a physical device.
-    public static var examplePillShaped = CITTopTabBarConfig(backgroundColor: .clear, selectedBackgroundColor: .white.opacity(0.2), showUnderline: false, selectedBackgroundCornerRadius: .infinity)
+    public static var examplePillShaped = CITTopTabBarConfig(backgroundColor: .clear, selectedBackgroundColor: .white.opacity(0.2), tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16), showUnderline: false, selectedBackgroundCornerRadius: .infinity)
 }
