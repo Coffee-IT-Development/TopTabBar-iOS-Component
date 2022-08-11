@@ -79,24 +79,24 @@ public struct CITTopTabBarConfig {
         selectedInsets.bottom + selectedInsets.top
     }
     
-    init(
-        backgroundColor: Color = .black,
-        selectedBackgroundColor: Color = .clear,
-        textColor: Color = .white.opacity(0.5),
-        selectedTextColor: Color = .white,
-        displayMode: CITTopTabBarDisplayMode = .atTopOfScreen(topPadding: 50),
-        font: Font = .system(size: 13, weight: .light, design: .default),
-        tabBarInsets: EdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
-        tabContentInsets: EdgeInsets = .init(top: 5, leading: 16, bottom: 5, trailing: 16),
-        underlineInsets: EdgeInsets = CITEdgeInsets.zero,
-        selectedInsets: EdgeInsets = CITEdgeInsets.zero,
-        selectedBackgroundInsets: EdgeInsets = CITEdgeInsets.zero,
-        showUnderline: Bool = true,
-        underlineColor: Color? = nil,
-        underlineHeight: CGFloat = 2,
-        underlineCornerRadius: CGFloat = .infinity,
-        selectedBackgroundCornerRadius: CGFloat = 0,
-        titleToBadgeSpacing: CGFloat = 8
+    public init(
+        backgroundColor: Color                      = .black,
+        selectedBackgroundColor: Color              = .clear,
+        textColor: Color                            = .white.opacity(0.5),
+        selectedTextColor: Color                    = .white,
+        displayMode: CITTopTabBarDisplayMode        = .atTopOfScreen(topPadding: 50),
+        font: Font                                  = .system(size: 13, weight: .light, design: .default),
+        tabBarInsets: EdgeInsets                    = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
+        tabContentInsets: EdgeInsets                = .init(top: 5, leading: 16, bottom: 5, trailing: 16),
+        underlineInsets: EdgeInsets                 = CITEdgeInsets.zero,
+        selectedInsets: EdgeInsets                  = CITEdgeInsets.zero,
+        selectedBackgroundInsets: EdgeInsets        = CITEdgeInsets.zero,
+        showUnderline: Bool                         = true,
+        underlineColor: Color?                      = nil,
+        underlineHeight: CGFloat                    = 2,
+        underlineCornerRadius: CGFloat              = .infinity,
+        selectedBackgroundCornerRadius: CGFloat     = 0,
+        titleToBadgeSpacing: CGFloat                = 8
     ) {
         self.backgroundColor = backgroundColor
         self.selectedBackgroundColor = selectedBackgroundColor
