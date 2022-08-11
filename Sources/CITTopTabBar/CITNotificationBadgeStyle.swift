@@ -9,6 +9,12 @@
 import SwiftUI
 
 public struct CITNotificationBadgeStyle: Equatable {
+    public static var defaultSize = CGSize(width: 12, height: 12)
+    public static var defaultPosition = CITNotificationBadgePosition.trailing
+    public static var defaultTextColor = Color.white
+    public static var example = CITNotificationBadgeStyle(color: .red)
+    public static var none = CITNotificationBadgeStyle(color: .clear, size: .zero)
+    
     public let color: Color
     public let size: CGSize
     public let position: CITNotificationBadgePosition
@@ -26,7 +32,7 @@ public struct CITNotificationBadgeStyle: Equatable {
         amount: CGFloat? = nil,
         roundToInt: Bool = true,
         font: Font? = nil,
-        textColor: Color = .white
+        textColor: Color = CITNotificationBadgeStyle.defaultTextColor
     ) {
         self.color = color
         self.size = size
@@ -37,9 +43,4 @@ public struct CITNotificationBadgeStyle: Equatable {
         self.font = font ?? .system(size: size.height - 2)
         self.textColor = textColor
     }
-    
-    public static var defaultSize = CGSize(width: 12, height: 12)
-    public static var defaultPosition = CITNotificationBadgePosition.trailing
-    public static var example = CITNotificationBadgeStyle(color: .red)
-    public static var none = CITNotificationBadgeStyle(color: .clear, size: .zero)
 }
