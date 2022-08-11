@@ -116,6 +116,12 @@ public var titleToBadgeSpacing: CGFloat
 /// This is what allows for minimal movement when switching between tabs if a selectedBackgroundColor is used without breaking the expected behavior of the matchedGeometryEffect.
 /// Note, this may no longer be necessary in the future if Apple improves the use of matchedGeometryEffect in .background() modifiers.
 public var verticalSelectedInset: CGFloat
+
+/// Returns optional top padding to make room for the status bar based on the displayMode.
+public var ignoreSafeEdgeTopPadding: CGFloat
+
+/// Returns displayMode as a boolean value to handle wether tab bar should be shown at the top of the view or not.
+public var showAtTopOfScreen: Bool
 ```
 
 ## Maintainer

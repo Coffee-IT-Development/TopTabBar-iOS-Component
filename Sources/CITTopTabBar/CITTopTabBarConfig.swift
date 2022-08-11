@@ -79,6 +79,26 @@ public struct CITTopTabBarConfig {
         selectedInsets.bottom + selectedInsets.top
     }
     
+    /// Returns optional top padding to make room for the status bar based on the displayMode.
+    public var ignoreSafeEdgeTopPadding: CGFloat {
+        switch displayMode {
+        case let .atTopOfScreen(padding):
+            return padding
+        default:
+            return 0
+        }
+    }
+    
+    /// Returns displayMode as a boolean value to handle wether tab bar should be shown at the top of the view or not.
+    public var showAtTopOfScreen: Bool {
+        switch displayMode {
+        case .atTopOfScreen:
+            return true
+        default:
+            return false
+        }
+    }
+    
     public init(
         backgroundColor: Color                      = .black,
         selectedBackgroundColor: Color              = .clear,
@@ -115,26 +135,6 @@ public struct CITTopTabBarConfig {
         self.underlineCornerRadius = underlineCornerRadius
         self.selectedBackgroundCornerRadius = selectedBackgroundCornerRadius
         self.titleToBadgeSpacing = titleToBadgeSpacing
-    }
-}
-
-extension CITTopTabBarConfig {
-    public var ignoreSafeEdgeTopPadding: CGFloat {
-        switch displayMode {
-        case let .atTopOfScreen(padding):
-            return padding
-        default:
-            return 0
-        }
-    }
-    
-    public var showAtTopOfScreen: Bool {
-        switch displayMode {
-        case .atTopOfScreen:
-            return true
-        default:
-            return false
-        }
     }
 }
 
