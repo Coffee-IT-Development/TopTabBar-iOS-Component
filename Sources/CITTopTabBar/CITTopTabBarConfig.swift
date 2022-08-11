@@ -130,7 +130,7 @@ extension CITTopTabBarConfig {
     
     public var showAtTopOfScreen: Bool {
         switch displayMode {
-        case .atTopOfScreen(_):
+        case .atTopOfScreen:
             return true
         default:
             return false

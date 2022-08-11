@@ -6,8 +6,8 @@
 //  Copyright © 2022 Coffee IT. All rights reserved.
 //
 
-import SwiftUI
 import CITTopTabBar
+import SwiftUI
 
 struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
