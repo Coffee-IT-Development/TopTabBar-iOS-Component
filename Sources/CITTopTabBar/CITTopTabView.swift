@@ -20,6 +20,14 @@ public struct CITTopTabView: View {
     
     @State private var calcHeight: CGFloat = 0
     
+    var isSelected: Bool {
+        index == selectedTab
+    }
+    
+    var textColor: Color {
+        isSelected ? config.selectedTextColor : config.textColor
+    }
+    
     public var body: some View {
         Button {
             selectedTab = index
@@ -126,16 +134,6 @@ public struct CITTopTabView: View {
                     calcHeight = isSelected ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
                 }
         }
-    }
-}
-
-extension CITTopTabView {
-    var isSelected: Bool {
-        index == selectedTab
-    }
-    
-    var textColor: Color {
-        isSelected ? config.selectedTextColor : config.textColor
     }
 }
 
