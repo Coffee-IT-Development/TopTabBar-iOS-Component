@@ -19,7 +19,7 @@ public enum CITNotificationBadge: Equatable {
             return ""
         }
         
-        guard !style.roundToInt else {
+        if style.roundToInt {
             return "\(Int(amount.rounded()))"
         }
         
