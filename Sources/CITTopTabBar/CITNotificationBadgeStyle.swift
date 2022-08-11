@@ -26,13 +26,13 @@ public struct CITNotificationBadgeStyle: Equatable {
     
     public init(
         color: Color,
-        size: CGSize = CITNotificationBadgeStyle.defaultSize,
-        position: CITNotificationBadgePosition = CITNotificationBadgeStyle.defaultPosition,
+        size: CGSize = Self.defaultSize,
+        position: CITNotificationBadgePosition = Self.defaultPosition,
         contentInsets: EdgeInsets = CITEdgeInsets.zero,
         amount: CGFloat? = nil,
         roundToInt: Bool = true,
         font: Font? = nil,
-        textColor: Color = CITNotificationBadgeStyle.defaultTextColor
+        textColor: Color = Self.defaultTextColor
     ) {
         self.color = color
         self.size = size
