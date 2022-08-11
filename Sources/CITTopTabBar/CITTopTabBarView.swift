@@ -14,9 +14,9 @@ import SwiftUI
 /// The tab bar is horizontally scrollable, but tries to keep the selected tab loyal to the center of the screen.
 /// Works well with a page style TabView to display content.
 public struct CITTopTabBarView: View {
-    @Namespace var namespace
-    @Binding var selectedTab: Int
-    @Binding var tabs: [CITTopTab]
+    @Namespace private var namespace
+    @Binding private var selectedTab: Int
+    @Binding private var tabs: [CITTopTab]
     private var config: CITTopTabBarConfig
     
     @State private var safeTopInsetNegation: CGFloat = 0
@@ -79,7 +79,7 @@ public struct CITTopTabBarView: View {
 }
 
 public struct CITTopTabBarView_Previews: PreviewProvider {
-    private struct _CITTopTabBarPreview: View {
+    private struct CITTopTabBarPreview: View {
         @State private var selectedTab: Int = 0
         
         var body: some View {
@@ -100,6 +100,6 @@ public struct CITTopTabBarView_Previews: PreviewProvider {
     }
     
     public static var previews: some View {
-        _CITTopTabBarPreview()
+        CITTopTabBarPreview()
     }
 }
