@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -98,8 +98,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = CIT;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
+				ORGANIZATIONNAME = "Coffee IT";
 				TargetAttributes = {
 					81C8564828997380007E229B = {
 						CreatedOnToolsVersion = 14.0;
@@ -107,7 +109,7 @@
 				};
 			};
 			buildConfigurationList = 81C8564428997380007E229B /* Build configuration list for PBXProject "CITTopTabBarExample" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
