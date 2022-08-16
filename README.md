@@ -8,7 +8,7 @@ The CITTopTabBar package provides a tab bar with several customisation options a
 
 ## Usage
 
-You can use the CITTopTabBarRunnable workspace to test the component directly.
+You can use the CITTopTabBarExample to test the component directly.
 
 OR
 

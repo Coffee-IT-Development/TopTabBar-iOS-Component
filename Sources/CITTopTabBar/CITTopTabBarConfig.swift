@@ -9,7 +9,6 @@
 import SwiftUI
 
 /// The CITTopTabBarConfig provides most of the static attributes of the CITTopTabBarView as a single object, incl.  fonts, colors, tabs and underline options.
-/// It can also be used dynamically with @State if desired, e.g. to animate cellSize, cornerRadius or colors.
 public struct CITTopTabBarConfig {
     
     /// The backgroundColor of the entire tab bar if not overlayed by anything else,
