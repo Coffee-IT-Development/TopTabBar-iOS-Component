@@ -1,25 +1,38 @@
-# CITTopTabBar
+<!--
+[![Coffee IT - Aroma CITTopTabBar iOS Component](https://coffeeit.nl/wp-content/uploads/2022/07/Aroma_Pincode_iOS.png)](https://coffeeit.nl/)
+-->
 
-A stylized tab bar used to switch between different detail views.
+[![Swift](https://img.shields.io/badge/Swift-5.6-red?style=flat-square)](https://img.shields.io/badge/Swift-5.6-red?style=flat-square)
+[![iOS 14+](https://img.shields.io/badge/iOS-v14+-pink?style=flat-square)](https://img.shields.io/badge/iOS-v14+-pink?style=flat-square)
+[![Mirror Repository](https://img.shields.io/badge/Mirror-Repository-pink?style=flat-square)](https://img.shields.io/badge/Mirror-Repository-pink?style=flat-square)
+[![License](https://img.shields.io/badge/License-MIT-pink.svg?style=flat-square)](LICENSE.txt)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-Compatible-red?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-Compatible-red?style=flat-square)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-@CoffeeIT-blue.svg?style=flat-square)](https://linkedin.com/company/coffee-it)
+[![Facebook](https://img.shields.io/badge/Facebook-CoffeeITNL-blue.svg?style=flat-square)](https://www.facebook.com/CoffeeITNL/)
+[![Instagram](https://img.shields.io/badge/Instagram-CoffeeITNL-blue.svg?style=flat-square)](https://www.instagram.com/coffeeitnl/)
+[![Twitter](https://img.shields.io/badge/Twitter-CoffeeITNL-blue.svg?style=flat-square)](https://twitter.com/coffeeitnl)
 
-## Overview
+The CITTopTabBar package provides a stylized tab bar used to switch between different detail views. It comes with several customization options and useful features like loyalty to center position, built-in animations, swipe/page-ability and notification badges with optional numbers.
 
-The CITTopTabBar package provides a tab bar with several customisation options and useful features like loyalty to center position at most, built-in animation, swipe/page-ability and notification badges or numbers.
+## Installation
+
+### SwiftPM
+
+To install the Swift Package, go to Project > Package Dependencies > + > Search or Enter Package URL > Fill in:
+```
+https://github.com/Coffee-IT-Development/TopTabBar-iOS-Component
+```
 
 ## Usage
-
-You can use the CITTopTabBarExample to test the component directly.
-
-OR
 
 Import CITTopTabBar and add a CITTopTabBarView to your SwiftUI view.
 Best used in combination with a page style TabView.
 
 ```swift
-import SwiftUI
 import CITTopTabBar
+import SwiftUI
 
-struct ContentView: View {
+struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
     @State var tabs: [CITTopTab] = [
         .init(title: "Long Example", badge: .circle(style: .init(color: .red))),
@@ -124,12 +137,19 @@ public var ignoreSafeEdgeTopPadding: CGFloat
 public var showAtTopOfScreen: Bool
 ```
 
+## Contact
+
+For questions, ideas or help you can reach us by email at contact@coffeeit.nl.
+
 ## Maintainer
 
+Owned by [Coffee IT](https://coffeeit.nl/).
 Actively maintained by Lex Brouwers.
 
-## Changelog
+## More
 
-#### 1.0.0
+Look at our other repositories on our [GitHub account](https://github.com/orgs/Coffee-IT-Development/repositories).
 
-- Setup CITTopTabBar, add customization & documentation.
+## License
+
+Distributed under the MIT License. [See LICENSE](LICENSE.txt) for more information.
