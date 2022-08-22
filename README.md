@@ -3,12 +3,14 @@
 -->
 
 [![Swift](https://img.shields.io/badge/Swift-5.6-red?style=flat-square)](https://img.shields.io/badge/Swift-5.6-red?style=flat-square)
-[![iOS 13+](https://img.shields.io/badge/iOS-v13+-pink?style=flat-square)](https://img.shields.io/badge/iOS-v13+-pink?style=flat-square)
+[![iOS 14+](https://img.shields.io/badge/iOS-v14+-pink?style=flat-square)](https://img.shields.io/badge/iOS-v14+-pink?style=flat-square)
 [![Mirror Repository](https://img.shields.io/badge/Mirror-Repository-pink?style=flat-square)](https://img.shields.io/badge/Mirror-Repository-pink?style=flat-square)
+[![License](https://img.shields.io/badge/License-MIT-pink.svg?style=flat-square)](LICENSE.txt)
 [![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-Compatible-red?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-Compatible-red?style=flat-square)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-@CoffeeIT-blue.svg?style=flat-square)](https://linkedin.com/company/coffee-it)
 [![Facebook](https://img.shields.io/badge/Facebook-CoffeeITNL-blue.svg?style=flat-square)](https://www.facebook.com/CoffeeITNL/)
 [![Instagram](https://img.shields.io/badge/Instagram-CoffeeITNL-blue.svg?style=flat-square)](https://www.instagram.com/coffeeitnl/)
+[![Twitter](https://img.shields.io/badge/Twitter-CoffeeITNL-blue.svg?style=flat-square)](https://twitter.com/coffeeitnl)
 
 The CITTopTabBar package provides a stylized tab bar used to switch between different detail views. It comes with several customization options and useful features like loyalty to center position, built-in animations, swipe/page-ability and notification badges with optional numbers.
 
