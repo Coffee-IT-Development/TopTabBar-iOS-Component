@@ -14,7 +14,7 @@ import SwiftUI
 public struct CITTopTabView: View {
     public let index: Int
     public let item: CITTopTab
-    public let config: CITTopTabBarConfig
+    public let config: CITTopTabBarView.Configuration
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
     

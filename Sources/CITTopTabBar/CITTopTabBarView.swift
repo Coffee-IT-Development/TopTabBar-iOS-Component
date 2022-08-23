@@ -17,7 +17,7 @@ public struct CITTopTabBarView: View {
     @Namespace private var namespace
     @Binding private var selectedTab: Int
     @Binding private var tabs: [CITTopTab]
-    private var config: CITTopTabBarConfig
+    private var config: CITTopTabBarView.Configuration
     
     @State private var safeTopInsetNegation: CGFloat = 0
     
@@ -29,7 +29,7 @@ public struct CITTopTabBarView: View {
     public init(
         selectedTab: Binding<Int>,
         tabs: Binding<[CITTopTab]>,
-        config: CITTopTabBarConfig
+        config: CITTopTabBarView.Configuration
     ) {
         self._selectedTab = selectedTab
         self._tabs = tabs
