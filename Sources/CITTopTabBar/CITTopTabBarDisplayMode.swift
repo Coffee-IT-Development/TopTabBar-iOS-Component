@@ -1,5 +1,5 @@
 //
-//  CITNotificationBadgePosition.swift
+//  CITTopTabBarDisplayMode.swift
 //  
 //  MIT License
 //
@@ -24,7 +24,10 @@
 //  SOFTWARE.
 //
 
-public enum CITNotificationBadgePosition {
-    case leading
-    case trailing
+import SwiftUI
+
+public enum CITTopTabBarDisplayMode: Equatable {
+    case normal
+    case atTopOfScreen(topPadding: CGFloat = 50)
 }
+
