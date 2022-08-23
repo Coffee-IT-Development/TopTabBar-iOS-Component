@@ -46,7 +46,7 @@ public struct CITTopTabView: View {
                 }
                 .padding(isSelected ? config.selectedInsets : CITEdgeInsets.zero)
             }
-            .animation(.spring(), value: $selectedTab.wrappedValue)
+            .animation(config.tabAnimation, value: $selectedTab.wrappedValue)
             .background(optionalFullSizeReader)
             .contentShape(Rectangle())
         }
@@ -64,7 +64,7 @@ public struct CITTopTabView: View {
                 .font(config.font)
                 .foregroundColor(.white)
                 .colorMultiply(textColor)
-                .animation(.easeInOut(duration: 0.3))
+                .animation(config.textAnimation)
             
             if let badge = item.badge, badge.style.position == .trailing {
                 CITNotificationBadgeView(badge: badge)

@@ -65,6 +65,12 @@ extension CITTopTabBarView {
         /// The corner radius of the underline, affects how much its corners are rounded, defaults to infinity, i.e. maximum rounding.
         public var underlineCornerRadius: CGFloat
         
+        /// The animation applied to the top tab view, applies to all of its content, but most noticably affects the underline animation.
+        public var tabAnimation: Animation?
+        
+        /// The animation applied to the text transition within the top tab view, affects both text color transition and offset caused by selectedInsets.
+        public var textAnimation: Animation?
+        
         /// The corner radius of the currently selected tab's background, only visible if a selectedBackgroundColor is given.
         /// To achieve a pill shape like selection, try .infinity and setting showUnderline to false.
         /// If you experience a lack of tab content padding with regards to its selected background, check your values for "tabContentInsets" vs "selectedBackgroundInsets" as the latter may negate the former.
@@ -116,6 +122,8 @@ extension CITTopTabBarView {
             underlineColor: Color?                      = nil,
             underlineHeight: CGFloat                    = 2,
             underlineCornerRadius: CGFloat              = .infinity,
+            tabAnimation: Animation?                    = .spring(),
+            textAnimation: Animation?                   = .easeInOut(duration: 0.3),
             selectedBackgroundCornerRadius: CGFloat     = 0,
             titleToBadgeSpacing: CGFloat                = 8
         ) {
@@ -134,15 +142,23 @@ extension CITTopTabBarView {
             self.underlineColor = underlineColor ?? selectedTextColor
             self.underlineHeight = underlineHeight
             self.underlineCornerRadius = underlineCornerRadius
+            self.tabAnimation = tabAnimation
+            self.textAnimation = textAnimation
             self.selectedBackgroundCornerRadius = selectedBackgroundCornerRadius
             self.titleToBadgeSpacing = titleToBadgeSpacing
         }
-        
         
         public static var exampleUnderlined = CITTopTabBarView.Configuration()
         public static var exampleAnimatedSelectionInset = CITTopTabBarView.Configuration(
             tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16),
             selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0)
+        )
+        
+        public static var exampleSlowAnimation = CITTopTabBarView.Configuration(
+            tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16),
+            selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0),
+            tabAnimation: .easeOut(duration: 2),
+            textAnimation: .easeOut(duration: 2)
         )
         
         /// Warning: the selectedBackgroundColor does not seem to display correctly in the Xcode Canvas preview, but it does work as intended at runtime on a physical device.
