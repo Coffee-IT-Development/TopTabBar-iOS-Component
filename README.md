@@ -149,8 +149,7 @@ For questions, ideas or help you can reach us by email at contact@coffeeit.nl.
 
 ## Maintainer
 
-Owned by [Coffee IT](https://coffeeit.nl/).
-Actively maintained by Lex Brouwers.
+Owned and actively maintained by [Coffee IT](https://coffeeit.nl/).
 
 ## More
 
