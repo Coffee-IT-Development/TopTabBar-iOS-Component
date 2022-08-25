@@ -36,16 +36,23 @@ struct CITTopTabBarExampleView: View {
             icon: .init(systemName: "airplane.departure"),
             iconColorOverride: .blue.opacity(0.5),
             selectedIconColorOverride: .blue,
-            badge: .circle(style: .init(color: .blue))
+            badge: .circle(style: .init(color: .blue)),
+            removeBadgeOnShow: true
         ),
         .init(title: "Books", icon: .init(systemName: "shield")),
         .init(
             title: "Sports",
             icon: .init(systemName: "key.viewfinder"),
-            badge: .circle(style: .init(color: .green, position: .leading))
+            badge: .circle(style: .init(color: .green, position: .leading)),
+            removeBadgeOnShow: true
         ),
         .init(title: "Series", icon: .init(systemName: "person.badge.key")),
-        .init(title: "Films", icon: .init(systemName: "dots.and.line.vertical.and.cursorarrow.rectangle")),
+        .init(
+            title: "Films",
+            icon: .init(systemName: "dots.and.line.vertical.and.cursorarrow.rectangle"),
+            badge: .circle(style: .init(color: .yellow, position: .trailing)),
+            removeBadgeOnShow: true
+        ),
         .init(title: "Fun", icon: .init(systemName: "lasso.and.sparkles")),
         .init(title: "Settings", icon: .init(systemName: "gamecontroller")),
         .init(title: "Library"),
@@ -54,7 +61,7 @@ struct CITTopTabBarExampleView: View {
     
     var body: some View {
         VStack {
-            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: .exampleUnderlined)
+            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: .examplePillShapedWithInset)
             
             TabView(selection: $selectedTab) {
                 ForEach(Array(tabs.enumerated()), id: \.offset) { offset, tab in

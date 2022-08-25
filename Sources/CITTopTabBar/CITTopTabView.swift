@@ -31,7 +31,7 @@ import SwiftUI
 /// This class is still made public so it can be previewed using the Canvas if desired.
 public struct CITTopTabView: View {
     public let index: Int
-    public let item: CITTopTab
+    @State public var item: CITTopTab
     public let config: CITTopTabBarView.Configuration
     public let tabsHaveAnyIcon: Bool
     public let namespace: Namespace.ID
@@ -93,6 +93,18 @@ public struct CITTopTabView: View {
                 
                 if let badge = item.badge, badge.style.position == .trailing {
                     CITNotificationBadgeView(badge: badge)
+                }
+            }
+        }
+        .onAppear {
+            if isSelected && item.removeBadgeOnShow {
+                item.badge = nil
+            }
+        }
+        .onChange(of: isSelected) { newValue in
+            if newValue == true && item.removeBadgeOnShow {
+                withAnimation(config.tabAnimation) {
+                    item.badge = nil
                 }
             }
         }
