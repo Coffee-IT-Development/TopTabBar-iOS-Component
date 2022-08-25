@@ -33,6 +33,7 @@ public struct CITTopTabView: View {
     public let index: Int
     public let item: CITTopTab
     public let config: CITTopTabBarView.Configuration
+    public let tabsHaveAnyIcon: Bool
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
     
@@ -44,6 +45,10 @@ public struct CITTopTabView: View {
     
     var textColor: Color {
         isSelected ? config.selectedTextColor : config.textColor
+    }
+    
+    var iconColors: (selected: Color, unselected: Color) {
+        item.iconColors(in: config)
     }
     
     public var body: some View {
@@ -73,22 +78,42 @@ public struct CITTopTabView: View {
     }
     
     var content: some View {
-        HStack(spacing: config.titleToBadgeSpacing) {
-            if let badge = item.badge, badge.style.position == .leading {
-                CITNotificationBadgeView(badge: badge)
-            }
+        VStack(spacing: config.spacingBelowIcon) {
+            optionalIcon
             
-            Text(item.title)
-                .font(config.font)
-                .foregroundColor(.white)
-                .colorMultiply(textColor)
-                .animation(config.textAnimation)
-            
-            if let badge = item.badge, badge.style.position == .trailing {
-                CITNotificationBadgeView(badge: badge)
+            HStack(spacing: config.titleToBadgeSpacing) {
+                if let badge = item.badge, badge.style.position == .leading {
+                    CITNotificationBadgeView(badge: badge)
+                }
+                
+                Text(item.title)
+                    .font(config.font)
+                    .foregroundColor(.white)
+                    .colorMultiply(textColor)
+                    .animation(config.textAnimation)
+                
+                if let badge = item.badge, badge.style.position == .trailing {
+                    CITNotificationBadgeView(badge: badge)
+                }
             }
         }
     }
+    
+    // MARK: - Icon
+    
+    @ViewBuilder
+    var optionalIcon: some View {
+        if let icon = item.icon {
+            icon.resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: config.iconSize.width, height: config.iconSize.height)
+                .foregroundColor(isSelected ? iconColors.selected : iconColors.unselected)
+        } else if tabsHaveAnyIcon {
+            Color.clear
+                .frame(width: config.iconSize.width, height: config.iconSize.height)
+        }
+    }
+    
     
     // MARK: - Underline
     
@@ -177,6 +202,6 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, namespace: namespace, selectedTab: .constant(0))
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, tabsHaveAnyIcon: false, namespace: namespace, selectedTab: .constant(0))
     }
 }

@@ -31,13 +31,23 @@ import SwiftUI
 struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
     @State var tabs: [CITTopTab] = [
-        .init(title: "Long Example", badge: .circle(style: .init(color: .blue))),
-        .init(title: "Books"),
-        .init(title: "Sports", badge: .circle(style: .init(color: .green, position: .leading))),
-        .init(title: "Series"),
-        .init(title: "Films"),
-        .init(title: "Fun"),
-        .init(title: "Settings"),
+        .init(
+            title: "Long Example",
+            icon: .init(systemName: "airplane.departure"),
+            iconColorOverride: .blue.opacity(0.5),
+            selectedIconColorOverride: .blue,
+            badge: .circle(style: .init(color: .blue))
+        ),
+        .init(title: "Books", icon: .init(systemName: "shield")),
+        .init(
+            title: "Sports",
+            icon: .init(systemName: "key.viewfinder"),
+            badge: .circle(style: .init(color: .green, position: .leading))
+        ),
+        .init(title: "Series", icon: .init(systemName: "person.badge.key")),
+        .init(title: "Films", icon: .init(systemName: "dots.and.line.vertical.and.cursorarrow.rectangle")),
+        .init(title: "Fun", icon: .init(systemName: "lasso.and.sparkles")),
+        .init(title: "Settings", icon: .init(systemName: "gamecontroller")),
         .init(title: "Library"),
         .init(title: "Example"),
     ]

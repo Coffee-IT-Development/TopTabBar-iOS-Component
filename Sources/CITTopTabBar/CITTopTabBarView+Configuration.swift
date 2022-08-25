@@ -45,6 +45,18 @@ extension CITTopTabBarView {
         /// The text color of the currently selected tab, if not given, defaults to textColor.
         public var selectedTextColor: Color
         
+        /// The size of any icons shown in the tabbar if not overridden.
+        public var iconSize: CGSize
+        
+        /// The color of icons in unselected tabs if not overridden.
+        public var iconColor: Color
+        
+        /// The color of icons in the selected tab if not overridden.
+        public var selectedIconColor: Color
+        
+        /// The spacing below the icon if any icons are shown, e.g. between the icon and the text.
+        public var spacingBelowIcon: CGFloat
+        
         /// The displayMode is used to select whether the CITTopTabBarView should be shown at the top of the screen or somewhere else.
         /// If .atTopOfScreen is selected, the top safe area will be ignored and filled with the given backgroundColor.
         /// - In this case, topPadding can be used to adjust the inset from the top of the screen.
@@ -129,6 +141,10 @@ extension CITTopTabBarView {
             selectedBackgroundColor: Color              = .clear,
             textColor: Color                            = .white.opacity(0.5),
             selectedTextColor: Color                    = .white,
+            iconSize: CGSize                            = .init(width: 24, height: 24),
+            iconColor: Color?                           = nil,
+            selectedIconColor: Color?                   = nil,
+            spacingBelowIcon: CGFloat                   = 4,
             displayMode: CITTopTabBarDisplayMode        = .atTopOfScreen(topPadding: 50),
             font: Font                                  = .system(size: 13, weight: .light, design: .default),
             tabBarInsets: EdgeInsets                    = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
@@ -149,6 +165,10 @@ extension CITTopTabBarView {
             self.selectedBackgroundColor = selectedBackgroundColor
             self.textColor = textColor
             self.selectedTextColor = selectedTextColor
+            self.iconSize = iconSize
+            self.iconColor = iconColor ?? textColor
+            self.selectedIconColor = selectedIconColor ?? selectedTextColor
+            self.spacingBelowIcon = spacingBelowIcon
             self.displayMode = displayMode
             self.font = font
             self.tabBarInsets = tabBarInsets
