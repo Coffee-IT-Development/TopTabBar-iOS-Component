@@ -36,7 +36,7 @@ public struct CITTopTabView: View {
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
     
-    @State private var calcHeight: CGFloat = 0
+    @State private var calculatedBackgroundHeight: CGFloat = 0
     
     var isSelected: Bool {
         index == selectedTab
@@ -90,6 +90,8 @@ public struct CITTopTabView: View {
         }
     }
     
+    // MARK: - Underline
+    
     @ViewBuilder
     var optionalUnderline: some View {
         if isSelected && config.showUnderline {
@@ -105,6 +107,22 @@ public struct CITTopTabView: View {
         }
     }
     
+    // MARK: - Background logic
+    
+    /// The following logic handles how the selected background is shown.
+    /// - optionalFullSizeBackground: Encapsulates content and underline.
+    /// - optionalContentBackground: Encapsulates only the content.
+    ///
+    /// The reason we use optional view with manual height calculation instead of simply using .background(color)
+    /// is that "matchedGeometryEffect" does not work in a .background modifier at this point in time. iOS 14-16.
+    /// Color fills its given size by default, and if unrestrained, will make the TopTabView much larger than it should be.
+    ///
+    /// To get the correct height, we use GeometryReader on invisible views.
+    /// If selected and has an underline, the proxy height will be the correct size.
+    /// For the unselected items, we add the vertical inset to keep the height equal for all tabs.
+    /// The result is a smooth transition of the selectedBackground when switching tabs.
+    ///
+
     @ViewBuilder
     var optionalFullSizeBackground: some View {
         if config.showUnderline {
@@ -124,7 +142,7 @@ public struct CITTopTabView: View {
     var optionalBackground: some View {
         if isSelected {
             config.selectedBackgroundColor
-                .frame(height: calcHeight)
+                .frame(height: calculatedBackgroundHeight)
                 .cornerRadius(config.selectedBackgroundCornerRadius)
                 .padding(config.selectedBackgroundInsets)
                 .matchedGeometryEffect(id: "background", in: namespace)
@@ -149,7 +167,7 @@ public struct CITTopTabView: View {
         GeometryReader { proxy in
             Color.clear
                 .onAppear {
-                    calcHeight = isSelected ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
+                    calculatedBackgroundHeight = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
                 }
         }
     }

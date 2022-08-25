@@ -187,5 +187,14 @@ extension CITTopTabBarView {
             showUnderline: false,
             selectedBackgroundCornerRadius: .infinity
         )
+        
+        public static var examplePillShapedWithInset = Configuration(
+            backgroundColor: .clear,
+            selectedBackgroundColor: .white.opacity(0.2),
+            tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16),
+            selectedInsets: .init(top: 0, leading: 0, bottom: 16, trailing: 0),
+            showUnderline: false,
+            selectedBackgroundCornerRadius: .infinity
+        )
     }
 }
