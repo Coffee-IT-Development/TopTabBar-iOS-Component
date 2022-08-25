@@ -32,46 +32,55 @@ struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
     @State var tabs: [CITTopTab] = [
         .init(
-            title: "Long Example",
-            icon: .init(systemName: "airplane.departure"),
-            iconColorOverride: .blue.opacity(0.5),
-            selectedIconColorOverride: .blue,
-            badge: .circle(style: .init(color: .blue)),
-            removeBadgeOnTabSelected: true
+            title: "Flight Departure",
+            icon: .init(systemName: "airplane.departure")
         ),
-        .init(title: "Books", icon: .init(systemName: "shield")),
+        .init(title: "Shield", icon: .init(systemName: "shield")),
         .init(
-            title: "Sports",
+            title: "Keyfinder",
             icon: .init(systemName: "key.viewfinder"),
-            badge: .circle(style: .init(color: .green, position: .leading)),
+            iconColorOverride: .orange.opacity(0.5),
+            selectedIconColorOverride: .orange
+        ),
+        .init(
+            title: "Keyholder",
+            icon: .init(systemName: "person.badge.key"),
+            badge: .circle(style: .init(color: .tabBarTextColor, position: .leading)),
             removeBadgeOnTabSelected: true
         ),
-        .init(title: "Series", icon: .init(systemName: "person.badge.key")),
         .init(
             title: "Films",
-            icon: .init(systemName: "dots.and.line.vertical.and.cursorarrow.rectangle"),
-            badge: .circle(style: .init(color: .yellow, position: .trailing)),
-            removeBadgeOnTabSelected: true
+            icon: .init(systemName: "film"),
+            badge: .circle(style: .init(color: .tabBarTextColor, position: .trailing))
         ),
-        .init(title: "Fun", icon: .init(systemName: "lasso.and.sparkles")),
-        .init(title: "Settings", icon: .init(systemName: "gamecontroller")),
-        .init(title: "Library"),
-        .init(title: "Example"),
+        .init(title: "Lasso", icon: .init(systemName: "lasso.and.sparkles")),
+        .init(title: "Gaming", icon: .init(systemName: "gamecontroller")),
+        .init(title: "Library", icon: .init(systemName: "books.vertical")),
+        .init(title: "Questions", icon: .init(systemName: "questionmark.app.dashed")),
     ]
+    
+    var config: CITTopTabBarView.Configuration {
+        var example: CITTopTabBarView.Configuration = .examplePillShapedWithInset
+        example.textColor = .tabBarTextColor
+        example.backgroundColor = .tabBarBackgroundColor
+        return example
+    }
     
     var body: some View {
         VStack {
-            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: .examplePillShapedWithInset)
+            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: config)
             
             TabView(selection: $selectedTab) {
                 ForEach(Array(tabs.enumerated()), id: \.offset) { offset, tab in
-                    Text(tab.title).tag(offset)
+                    Text(tab.title)
+                        .font(.system(size: 16, weight: .bold))
+                        .tag(offset)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .edgesIgnoringSafeArea(.all)
         }
-        .background(Color.red)
+        .background(Color.coffeeItColor)
         .preferredColorScheme(.dark)
         .edgesIgnoringSafeArea(.all)
     }
