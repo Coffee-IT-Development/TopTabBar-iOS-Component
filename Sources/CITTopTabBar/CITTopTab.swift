@@ -34,7 +34,7 @@ public struct CITTopTab: Identifiable, Hashable {
     public var iconColorOverride: Color?
     public var selectedIconColorOverride: Color?
     public var badge: CITNotificationBadge?
-    public var removeBadgeOnShow: Bool
+    public var removeBadgeOnTabSelected: Bool
     
     public init(
         title: String,
@@ -42,14 +42,14 @@ public struct CITTopTab: Identifiable, Hashable {
         iconColorOverride: Color? = nil,
         selectedIconColorOverride: Color? = nil,
         badge: CITNotificationBadge? = nil,
-        removeBadgeOnShow: Bool = false
+        removeBadgeOnTabSelected: Bool = false
     ) {
         self.title = title
         self.icon = icon
         self.iconColorOverride = iconColorOverride
         self.selectedIconColorOverride = selectedIconColorOverride
         self.badge = badge
-        self.removeBadgeOnShow = removeBadgeOnShow
+        self.removeBadgeOnTabSelected = removeBadgeOnTabSelected
     }
     
     public func hash(into hasher: inout Hasher) {

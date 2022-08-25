@@ -37,21 +37,21 @@ struct CITTopTabBarExampleView: View {
             iconColorOverride: .blue.opacity(0.5),
             selectedIconColorOverride: .blue,
             badge: .circle(style: .init(color: .blue)),
-            removeBadgeOnShow: true
+            removeBadgeOnTabSelected: true
         ),
         .init(title: "Books", icon: .init(systemName: "shield")),
         .init(
             title: "Sports",
             icon: .init(systemName: "key.viewfinder"),
             badge: .circle(style: .init(color: .green, position: .leading)),
-            removeBadgeOnShow: true
+            removeBadgeOnTabSelected: true
         ),
         .init(title: "Series", icon: .init(systemName: "person.badge.key")),
         .init(
             title: "Films",
             icon: .init(systemName: "dots.and.line.vertical.and.cursorarrow.rectangle"),
             badge: .circle(style: .init(color: .yellow, position: .trailing)),
-            removeBadgeOnShow: true
+            removeBadgeOnTabSelected: true
         ),
         .init(title: "Fun", icon: .init(systemName: "lasso.and.sparkles")),
         .init(title: "Settings", icon: .init(systemName: "gamecontroller")),
