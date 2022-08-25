@@ -90,7 +90,6 @@ public struct CITTopTabView: View {
                     .font(config.font)
                     .foregroundColor(.white)
                     .colorMultiply(textColor)
-                    .animation(config.textAnimation)
                 
                 if let badge = item.badge, badge.style.position == .trailing {
                     CITNotificationBadgeView(badge: badge)
