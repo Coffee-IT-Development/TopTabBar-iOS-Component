@@ -60,7 +60,7 @@ struct CITTopTabBarExampleView: View {
     ]
     
     var config: CITTopTabBarView.Configuration {
-        var example: CITTopTabBarView.Configuration = .exampleUnderlined
+        var example: CITTopTabBarView.Configuration = .examplePillShapedWithInset
         example.textColor = .tabBarTextColor
         example.backgroundColor = .tabBarBackgroundColor
         return example
