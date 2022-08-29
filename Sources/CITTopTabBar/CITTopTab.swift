@@ -58,7 +58,7 @@ public struct CITTopTab: Identifiable, Hashable {
     }
     
     public func iconColors(in config: CITTopTabBarView.Configuration) -> (selected: Color, unselected: Color) {
-        return (
+        (
             selected: selectedIconColorOverride ?? config.selectedIconColor,
             unselected: iconColorOverride ?? config.iconColor
         )
