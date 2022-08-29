@@ -3,8 +3,14 @@ All notable changes to this project will be documented in this file.
 `CITTopTabBar` adheres to [Semantic Versioning](https://semver.org/).
 
 #### 1.x Releases
+- `1.2.x` Releases - [1.2.0](#anchor-120)
 - `1.1.x` Releases - [1.1.0](#anchor-110) | [1.1.1](#anchor-111)
 - `1.0.x` Releases - [1.0.0](#anchor-100) | [1.0.1](#anchor-101) | [1.0.2](#anchor-102)
+
+#### 1.2.0
+
+- Add support for icons in tab content.
+- Add ability to automatically remove the notification badge of a tab when it is shown.
 
 #### 1.1.1
 
