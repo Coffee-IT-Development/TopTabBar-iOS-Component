@@ -101,8 +101,8 @@ public struct CITTopTabView: View {
                 item.badge = nil
             }
         }
-        .onChange(of: isSelected) { newValue in
-            if newValue == true && item.removeBadgeOnTabSelected {
+        .onChange(of: isSelected) { isSelected in
+            if isSelected && item.removeBadgeOnTabSelected {
                 withAnimation(config.tabAnimation) {
                     item.badge = nil
                 }
