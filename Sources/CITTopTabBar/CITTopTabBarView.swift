@@ -39,14 +39,8 @@ public struct CITTopTabBarView: View {
     
     @State private var safeTopInsetNegation: CGFloat = 0
     
-    private var tabsHaveAnyIcon: Bool {
-        for tab in tabs {
-            if tab.icon != nil {
-                return true
-            }
-        }
-        
-        return false
+    private var doesAnyTabHaveIcon: Bool {
+        !tabs.allSatisfy { $0.icon == nil }
     }
     
     /// Intialise the top tab bar view with bindings for the selectedTab and tab objects and add a config of your choice, you can use .example configs to try out the component.
@@ -73,7 +67,7 @@ public struct CITTopTabBarView: View {
                             index: index,
                             item: item,
                             config: config,
-                            tabsHaveAnyIcon: tabsHaveAnyIcon,
+                            doesAnyTabHaveIcon: doesAnyTabHaveIcon,
                             namespace: namespace,
                             selectedTab: $selectedTab
                         )
