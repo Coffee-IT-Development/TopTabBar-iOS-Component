@@ -151,7 +151,7 @@ extension CITTopTabBarView {
             selectedBackgroundInsets: EdgeInsets        = CITEdgeInsets.zero,
             showUnderline: Bool                         = true,
             underlineColor: Color?                      = nil,
-            underlineHeight: CGFloat                    = 2,
+            underlineHeight: CGFloat                    = 1,
             underlineCornerRadius: CGFloat              = .infinity,
             tabAnimation: Animation?                    = .spring(),
             textAnimation: Animation?                   = .easeInOut(duration: 0.3),
