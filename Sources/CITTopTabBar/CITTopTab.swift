@@ -30,15 +30,37 @@ import SwiftUI
 public struct CITTopTab: Identifiable, Hashable {
     public var id = UUID()
     public var title: String
+    public var icon: Image?
+    public var iconColorOverride: Color?
+    public var selectedIconColorOverride: Color?
     public var badge: CITNotificationBadge?
+    public var removeBadgeOnTabSelected: Bool
     
-    public init(title: String, badge: CITNotificationBadge? = nil) {
+    public init(
+        title: String,
+        icon: Image? = nil,
+        iconColorOverride: Color? = nil,
+        selectedIconColorOverride: Color? = nil,
+        badge: CITNotificationBadge? = nil,
+        removeBadgeOnTabSelected: Bool = false
+    ) {
         self.title = title
+        self.icon = icon
+        self.iconColorOverride = iconColorOverride
+        self.selectedIconColorOverride = selectedIconColorOverride
         self.badge = badge
+        self.removeBadgeOnTabSelected = removeBadgeOnTabSelected
     }
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(title)
+    }
+    
+    public func iconColors(in config: CITTopTabBarView.Configuration) -> (selected: Color, unselected: Color) {
+        (
+            selected: selectedIconColorOverride ?? config.selectedIconColor,
+            unselected: iconColorOverride ?? config.iconColor
+        )
     }
 }

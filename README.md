@@ -35,29 +35,58 @@ import SwiftUI
 struct CITTopTabBarExampleView: View {
     @State var selectedTab: Int = 0
     @State var tabs: [CITTopTab] = [
-        .init(title: "Long Example", badge: .circle(style: .init(color: .red))),
-        .init(title: "Books"),
-        .init(title: "Sports", badge: .circle(style: .init(color: .green, position: .leading))),
-        .init(title: "Series"),
-        .init(title: "Films"),
-        .init(title: "Fun"),
-        .init(title: "Settings"),
-        .init(title: "Library"),
-        .init(title: "Example"),
+        .init(
+            title: "Flight Departure",
+            icon: .init(systemName: "airplane.departure")
+        ),
+        .init(title: "Shield", icon: .init(systemName: "shield")),
+        .init(
+            title: "Keyfinder",
+            icon: .init(systemName: "key.viewfinder"),
+            iconColorOverride: .orange.opacity(0.5),
+            selectedIconColorOverride: .orange
+        ),
+        .init(
+            title: "Keyholder",
+            icon: .init(systemName: "person.badge.key"),
+            badge: .circle(style: .init(color: .tabBarTextColor, position: .leading)),
+            removeBadgeOnTabSelected: true
+        ),
+        .init(
+            title: "Films",
+            icon: .init(systemName: "film"),
+            badge: .circle(style: .init(color: .tabBarTextColor, position: .trailing))
+        ),
+        .init(title: "Lasso", icon: .init(systemName: "lasso.and.sparkles")),
+        .init(title: "Gaming", icon: .init(systemName: "gamecontroller")),
+        .init(title: "Library", icon: .init(systemName: "books.vertical")),
+        .init(title: "Questions", icon: .init(systemName: "questionmark.app.dashed")),
     ]
+    
+    var config: CITTopTabBarView.Configuration {
+        var example: CITTopTabBarView.Configuration = .examplePillShapedWithInset
+        example.textColor = .tabBarTextColor
+        example.backgroundColor = .tabBarBackgroundColor
+        return example
+    }
     
     var body: some View {
         VStack {
-            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: .exampleUnderlined)
+            CITTopTabBarView(selectedTab: $selectedTab, tabs: $tabs, config: config)
             
             TabView(selection: $selectedTab) {
                 ForEach(Array(tabs.enumerated()), id: \.offset) { offset, tab in
-                    Text(tab.title).tag(offset)
+                    Text(tab.title)
+                        .font(.system(size: 16, weight: .bold))
+                        .tag(offset)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .edgesIgnoringSafeArea(.all)
         }
+        .background(Color.coffeeItColor)
+        .preferredColorScheme(.dark)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 ```
@@ -78,6 +107,18 @@ public var textColor: Color
 
 /// The text color of the currently selected tab, if not given, defaults to textColor.
 public var selectedTextColor: Color
+
+/// The size of any icons shown in the tabbar if not overridden.
+public var iconSize: CGSize
+
+/// The color of icons in unselected tabs if not overridden.
+public var iconColor: Color
+
+/// The color of icons in the selected tab if not overridden.
+public var selectedIconColor: Color
+
+/// The spacing below the icon if any icons are shown, e.g. between the icon and the text.
+public var spacingBelowIcon: CGFloat
 
 /// The displayMode is used to select whether the CITTopTabBarView should be shown at the top of the screen or somewhere else.
 /// If .atTopOfScreen is selected, the top safe area will be ignored and filled with the given backgroundColor.
@@ -117,12 +158,9 @@ public var underlineHeight: CGFloat
 /// The corner radius of the underline, affects how much its corners are rounded, defaults to infinity, i.e. maximum rounding.
 public var underlineCornerRadius: CGFloat
 
-/// The animation applied to the top tab view, applies to all of its content, but most noticably affects the underline animation.
+/// The animation applied to the top tab view, applies to all of its content, but most noticably affects the underline and background matchedGeometry animations.
 public var tabAnimation: Animation?
 
-/// The animation applied to the text transition within the top tab view, affects both text color transition and offset caused by selectedInsets.
-public var textAnimation: Animation?
-        
 /// The corner radius of the currently selected tab's background, only visible if a selectedBackgroundColor is given.
 /// To achieve a pill shape like selection, try .infinity and setting showUnderline to false.
 /// If you experience a lack of tab content padding with regards to its selected background, check your values for "tabContentInsets" vs "selectedBackgroundInsets" as the latter may negate the former.
