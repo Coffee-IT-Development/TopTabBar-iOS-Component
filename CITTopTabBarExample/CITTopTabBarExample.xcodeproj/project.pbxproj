@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8171959C28B7BBA5007612CA /* CITTopTabBarExampleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171959B28B7BBA5007612CA /* CITTopTabBarExampleColors.swift */; };
 		81C8564D28997380007E229B /* CITTopTabBarExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8564C28997380007E229B /* CITTopTabBarExampleApp.swift */; };
 		81C8564F28997380007E229B /* CITTopTabBarExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8564E28997380007E229B /* CITTopTabBarExampleView.swift */; };
 		81C8565128997381007E229B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C8565028997381007E229B /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8171959B28B7BBA5007612CA /* CITTopTabBarExampleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CITTopTabBarExampleColors.swift; sourceTree = "<group>"; };
 		81C8564928997380007E229B /* CITTopTabBarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CITTopTabBarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C8564C28997380007E229B /* CITTopTabBarExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CITTopTabBarExampleApp.swift; sourceTree = "<group>"; };
 		81C8564E28997380007E229B /* CITTopTabBarExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CITTopTabBarExampleView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				81C8564C28997380007E229B /* CITTopTabBarExampleApp.swift */,
 				81C8564E28997380007E229B /* CITTopTabBarExampleView.swift */,
+				8171959B28B7BBA5007612CA /* CITTopTabBarExampleColors.swift */,
 				81C8565028997381007E229B /* Assets.xcassets */,
 			);
 			path = CITTopTabBarExample;
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8171959C28B7BBA5007612CA /* CITTopTabBarExampleColors.swift in Sources */,
 				81C8564F28997380007E229B /* CITTopTabBarExampleView.swift in Sources */,
 				81C8564D28997380007E229B /* CITTopTabBarExampleApp.swift in Sources */,
 			);

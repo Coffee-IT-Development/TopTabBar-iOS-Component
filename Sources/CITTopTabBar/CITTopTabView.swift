@@ -31,8 +31,9 @@ import SwiftUI
 /// This class is still made public so it can be previewed using the Canvas if desired.
 public struct CITTopTabView: View {
     public let index: Int
-    public let item: CITTopTab
+    @State public var item: CITTopTab
     public let config: CITTopTabBarView.Configuration
+    public let doesAnyTabHaveIcon: Bool
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
     
@@ -44,6 +45,10 @@ public struct CITTopTabView: View {
     
     var textColor: Color {
         isSelected ? config.selectedTextColor : config.textColor
+    }
+    
+    var iconColors: (selected: Color, unselected: Color) {
+        item.iconColors(in: config)
     }
     
     public var body: some View {
@@ -73,22 +78,53 @@ public struct CITTopTabView: View {
     }
     
     var content: some View {
-        HStack(spacing: config.titleToBadgeSpacing) {
-            if let badge = item.badge, badge.style.position == .leading {
-                CITNotificationBadgeView(badge: badge)
+        VStack(spacing: config.spacingBelowIcon) {
+            optionalIcon
+            
+            HStack(spacing: config.titleToBadgeSpacing) {
+                if let badge = item.badge, badge.style.position == .leading {
+                    CITNotificationBadgeView(badge: badge)
+                }
+                
+                Text(item.title)
+                    .font(config.font)
+                    .foregroundColor(.white)
+                    .colorMultiply(textColor)
+                
+                if let badge = item.badge, badge.style.position == .trailing {
+                    CITNotificationBadgeView(badge: badge)
+                }
             }
-            
-            Text(item.title)
-                .font(config.font)
-                .foregroundColor(.white)
-                .colorMultiply(textColor)
-                .animation(config.textAnimation)
-            
-            if let badge = item.badge, badge.style.position == .trailing {
-                CITNotificationBadgeView(badge: badge)
+        }
+        .onAppear {
+            if isSelected && item.removeBadgeOnTabSelected {
+                item.badge = nil
+            }
+        }
+        .onChange(of: isSelected) { isSelected in
+            if isSelected && item.removeBadgeOnTabSelected {
+                withAnimation(config.tabAnimation) {
+                    item.badge = nil
+                }
             }
         }
     }
+    
+    // MARK: - Icon
+    
+    @ViewBuilder
+    var optionalIcon: some View {
+        if let icon = item.icon {
+            icon.resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: config.iconSize.width, height: config.iconSize.height)
+                .foregroundColor(isSelected ? iconColors.selected : iconColors.unselected)
+        } else if doesAnyTabHaveIcon {
+            Color.clear
+                .frame(width: config.iconSize.width, height: config.iconSize.height)
+        }
+    }
+    
     
     // MARK: - Underline
     
@@ -177,6 +213,6 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, namespace: namespace, selectedTab: .constant(0))
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0))
     }
 }
