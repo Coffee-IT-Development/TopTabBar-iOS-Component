@@ -36,6 +36,7 @@ public struct CITTopTabView: View {
     public let doesAnyTabHaveIcon: Bool
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
+    @Binding public var greatestTabHeight: CGFloat
     @Binding public var greatestBackgroundHeight: CGFloat
     
     var isSelected: Bool {
@@ -50,19 +51,31 @@ public struct CITTopTabView: View {
         item.iconColors(in: config)
     }
     
+    var showUnderline: Bool {
+        config.showUnderline
+    }
+    
     public var body: some View {
         Button {
             selectedTab = index
         } label: {
             ZStack {
-                optionalFullSizeBackground
+                if showUnderline {
+                    optionalSelectedBackground
+                }
                 
                 VStack(spacing: 0) {
                     ZStack {
-                        optionalContentBackground
+                        if !showUnderline {
+                            optionalSelectedBackground
+                        }
+                        
                         content
                             .padding(config.tabContentInsets)
-                            .background(optionalContentSizeReader)
+                            .frame(minHeight: greatestTabHeight)
+                            .if(!showUnderline) {
+                                $0.background(sizeReader)
+                            }
                     }
                     
                     optionalUnderline
@@ -70,7 +83,9 @@ public struct CITTopTabView: View {
                 .padding(isSelected ? config.selectedInsets : CITEdgeInsets.zero)
             }
             .animation(config.tabAnimation, value: $selectedTab.wrappedValue)
-            .background(optionalFullSizeReader)
+            .if(showUnderline) {
+                $0.background(sizeReader)
+            }
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -159,24 +174,9 @@ public struct CITTopTabView: View {
     /// For the unselected items, we add the vertical inset to keep the height equal for all tabs.
     /// The result is a smooth transition of the selectedBackground when switching tabs.
     ///
-
-    @ViewBuilder
-    var optionalFullSizeBackground: some View {
-        if config.showUnderline {
-            optionalBackground
-        }
-    }
-    
     
     @ViewBuilder
-    var optionalContentBackground: some View {
-        if !config.showUnderline {
-            optionalBackground
-        }
-    }
-    
-    @ViewBuilder
-    var optionalBackground: some View {
+    var optionalSelectedBackground: some View {
         if isSelected {
             config.selectedBackgroundColor
                 .frame(height: greatestBackgroundHeight)
@@ -186,27 +186,17 @@ public struct CITTopTabView: View {
         }
     }
     
-    @ViewBuilder
-    var optionalFullSizeReader: some View {
-        if config.showUnderline {
-            reader
-        }
-    }
-    
-    @ViewBuilder
-    var optionalContentSizeReader: some View {
-        if !config.showUnderline {
-            reader
-        }
-    }
-    
-    var reader: some View {
+    var sizeReader: some View {
         GeometryReader { proxy in
             Color.clear
                 .onAppear {
-                    let backgroundHeight = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
-                    if backgroundHeight > greatestBackgroundHeight {
-                        greatestBackgroundHeight = backgroundHeight
+                    let height = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
+                    if height > greatestBackgroundHeight {
+                        greatestBackgroundHeight = height
+                    }
+                    
+                    if height > greatestTabHeight {
+                        greatestTabHeight = height
                     }
                 }
         }
@@ -217,6 +207,6 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0), greatestBackgroundHeight: .constant(80))
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0), greatestTabHeight: .constant(100), greatestBackgroundHeight: .constant(80))
     }
 }

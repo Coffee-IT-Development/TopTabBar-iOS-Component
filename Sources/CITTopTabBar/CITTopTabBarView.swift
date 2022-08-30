@@ -38,7 +38,8 @@ public struct CITTopTabBarView: View {
     private var config: CITTopTabBarView.Configuration
     
     @State private var safeTopInsetNegation: CGFloat = 0
-    @State private var greatestBackgroundHeight: CGFloat = 0
+    @State private var greatestTabHeight: CGFloat = 0 /// Supports config.fixedWidth is TRUE: exampleUnderlined
+    @State private var greatestBackgroundHeight: CGFloat = 0 /// Supports config.fixedWidth is TRUE: examplePillShapedWithInset
     
     private var doesAnyTabHaveIcon: Bool {
         !tabs.allSatisfy { $0.icon == nil }
@@ -71,6 +72,7 @@ public struct CITTopTabBarView: View {
                             doesAnyTabHaveIcon: doesAnyTabHaveIcon,
                             namespace: namespace,
                             selectedTab: $selectedTab,
+                            greatestTabHeight: $greatestTabHeight,
                             greatestBackgroundHeight: $greatestBackgroundHeight
                         )
                         .id(index)
