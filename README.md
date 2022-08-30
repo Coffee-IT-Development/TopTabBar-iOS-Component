@@ -60,11 +60,11 @@ struct CITTopTabBarExampleView: View {
         .init(title: "Lasso", icon: .init(systemName: "lasso.and.sparkles")),
         .init(title: "Gaming", icon: .init(systemName: "gamecontroller")),
         .init(title: "Library", icon: .init(systemName: "books.vertical")),
-        .init(title: "Questions", icon: .init(systemName: "questionmark.app.dashed")),
+        .init(title: "Questions", icon: .init(systemName: "questionmark.app.dashed"))
     ]
     
     var config: CITTopTabBarView.Configuration {
-        var example: CITTopTabBarView.Configuration = .examplePillShapedWithInset
+        var example: CITTopTabBarView.Configuration = .exampleUnderlined
         example.textColor = .tabBarTextColor
         example.backgroundColor = .tabBarBackgroundColor
         return example
