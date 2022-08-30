@@ -114,6 +114,9 @@ public var iconSize: CGSize
 /// The color of icons in unselected tabs if not overridden.
 public var iconColor: Color
 
+/// The position of icons in tabs, defaults to `top`.
+public var iconPosition: CITTopTabIconPosition
+
 /// The color of icons in the selected tab if not overridden.
 public var selectedIconColor: Color
 
@@ -130,6 +133,9 @@ public var widthMode: CITTopTabBarWidthMode
 
 /// The font used to display tab titles.
 public var font: Font
+
+/// The line limit for titles in every tab. If `nil`, no line limit applies. Defaults to `1`.
+public var lineLimit: Int?
 
 /// Used to add insets to the entire tabbar, commonly used to add horizontal padding to the scrollable content so it doesn't touch the sides in its initial state.
 public var tabBarInsets: EdgeInsets
