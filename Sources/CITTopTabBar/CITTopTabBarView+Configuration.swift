@@ -62,6 +62,9 @@ extension CITTopTabBarView {
         /// - In this case, topPadding can be used to adjust the inset from the top of the screen.
         public var displayMode: CITTopTabBarDisplayMode
         
+        /// The widthMode is used  to select whether the CITTopTabBarView should be scrollable or fill up the given space and give tabs an equal, fixed width.
+        public var widthMode: CITTopTabBarWidthMode
+        
         /// The font used to display tab titles.
         public var font: Font
         
@@ -143,6 +146,7 @@ extension CITTopTabBarView {
             selectedIconColor: Color?                   = nil,
             spacingBelowIcon: CGFloat                   = 4,
             displayMode: CITTopTabBarDisplayMode        = .atTopOfScreen(topPadding: 50),
+            widthMode: CITTopTabBarWidthMode            = .scrollable,
             font: Font                                  = .system(size: 13, weight: .light, design: .default),
             tabBarInsets: EdgeInsets                    = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
             tabContentInsets: EdgeInsets                = .init(top: 5, leading: 16, bottom: 5, trailing: 16),
@@ -167,6 +171,7 @@ extension CITTopTabBarView {
             self.selectedIconColor = selectedIconColor ?? selectedTextColor
             self.spacingBelowIcon = spacingBelowIcon
             self.displayMode = displayMode
+            self.widthMode = widthMode
             self.font = font
             self.tabBarInsets = tabBarInsets
             self.tabContentInsets = tabContentInsets
@@ -182,8 +187,8 @@ extension CITTopTabBarView {
             self.titleToBadgeSpacing = titleToBadgeSpacing
         }
         
-        public static var exampleUnderlined = CITTopTabBarView.Configuration()
-        public static var exampleAnimatedSelectionInset = CITTopTabBarView.Configuration(
+        public static var exampleUnderlined = CITTopTabBarView.Configuration(widthMode: .fixed)
+        public static var exampleUnderlinedWithSelectedInset = CITTopTabBarView.Configuration(
             tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16),
             selectedInsets: .init(top: 0, leading: 0, bottom: 10, trailing: 0)
         )
@@ -204,7 +209,7 @@ extension CITTopTabBarView {
             selectedBackgroundCornerRadius: .infinity
         )
         
-        public static var examplePillShapedWithInset = Configuration(
+        public static var examplePillShapedWithSelectedInset = Configuration(
             backgroundColor: .clear,
             selectedBackgroundColor: .white.opacity(0.2),
             tabBarInsets: .init(top: 0, leading: 16, bottom: 0, trailing: 16),

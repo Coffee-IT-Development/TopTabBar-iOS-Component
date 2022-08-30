@@ -38,8 +38,8 @@ public struct CITTopTabBarView: View {
     private var config: CITTopTabBarView.Configuration
     
     @State private var safeTopInsetNegation: CGFloat = 0
-    @State private var greatestTabHeight: CGFloat = 0 /// Supports config.fixedWidth is TRUE: exampleUnderlined
-    @State private var greatestBackgroundHeight: CGFloat = 0 /// Supports config.fixedWidth is TRUE: examplePillShapedWithInset
+    @State private var greatestTabHeight: CGFloat = 0 /// Supports config.widthMode == .fixed for exampleUnderlined
+    @State private var greatestBackgroundHeight: CGFloat = 0 /// Supports config.widthMode == .fixed for examplePillShapedWithInset
     
     private var doesAnyTabHaveIcon: Bool {
         !tabs.allSatisfy { $0.icon == nil }
@@ -61,46 +61,63 @@ public struct CITTopTabBarView: View {
     }
     
     public var body: some View {
+        wrappedTabBarView
+            .optionalIgnoreEdges(edges: .top, active: config.showAtTopOfScreen)
+            .padding(.bottom, -safeTopInsetNegation)
+            .background(
+                GeometryReader { proxy in
+                    Color.clear.onAppear {
+                        if config.showAtTopOfScreen {
+                            safeTopInsetNegation = proxy.safeAreaInsets.top
+                        }
+                    }
+                }
+            )
+    }
+    
+    @ViewBuilder
+    var wrappedTabBarView: some View {
+        if config.widthMode == .scrollable {
+            scrollableTabBarView
+        } else {
+            tabBarView
+        }
+    }
+    
+    var scrollableTabBarView: some View {
         ScrollViewReader { value in
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 0) {
-                    ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
-                        CITTopTabView(
-                            index: index,
-                            item: item,
-                            config: config,
-                            doesAnyTabHaveIcon: doesAnyTabHaveIcon,
-                            namespace: namespace,
-                            selectedTab: $selectedTab,
-                            greatestTabHeight: $greatestTabHeight,
-                            greatestBackgroundHeight: $greatestBackgroundHeight
-                        )
-                        .id(index)
+                tabBarView
+                    .onChange(of: selectedTab) { tab in
+                        withAnimation {
+                            value.scrollTo(tab, anchor: .center)
+                        }
                     }
-                }
-                .padding(.top, config.ignoreSafeEdgeTopPadding)
-                .padding(config.tabBarInsets)
-                .background(
-                    config.backgroundColor
-                        .padding(.horizontal, -UIScreen.main.bounds.width)
-                )
-                .onChange(of: selectedTab) { tab in
-                    withAnimation {
-                        value.scrollTo(tab, anchor: .center)
-                    }
-                }
             }
         }
-        .optionalIgnoreEdges(edges: .top, active: config.showAtTopOfScreen)
-        .padding(.bottom, -safeTopInsetNegation)
-        .background(
-            GeometryReader { proxy in
-                Color.clear.onAppear {
-                    if config.showAtTopOfScreen {
-                        safeTopInsetNegation = proxy.safeAreaInsets.top
-                    }
-                }
+    }
+    
+    var tabBarView: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
+                CITTopTabView(
+                    index: index,
+                    item: item,
+                    config: config,
+                    doesAnyTabHaveIcon: doesAnyTabHaveIcon,
+                    namespace: namespace,
+                    selectedTab: $selectedTab,
+                    greatestTabHeight: $greatestTabHeight,
+                    greatestBackgroundHeight: $greatestBackgroundHeight
+                )
+                .id(index)
             }
+        }
+        .padding(.top, config.ignoreSafeEdgeTopPadding)
+        .padding(config.tabBarInsets)
+        .background(
+            config.backgroundColor
+                .padding(.horizontal, -UIScreen.main.bounds.width)
         )
     }
 }

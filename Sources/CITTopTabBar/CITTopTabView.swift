@@ -162,8 +162,8 @@ public struct CITTopTabView: View {
     // MARK: - Background logic
     
     /// The following logic handles how the selected background is shown.
-    /// - optionalFullSizeBackground: Encapsulates content and underline.
-    /// - optionalContentBackground: Encapsulates only the content.
+    /// - if showUnderline: Encapsulate content and underline.
+    /// - if not showUnderline: Encapsulate only the content.
     ///
     /// The reason we use optional view with manual height calculation instead of simply using .background(color)
     /// is that "matchedGeometryEffect" does not work in a .background modifier at this point in time. iOS 14-16.

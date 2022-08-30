@@ -125,6 +125,9 @@ public var spacingBelowIcon: CGFloat
 /// - In this case, topPadding can be used to adjust the inset from the top of the screen.
 public var displayMode: CITTopTabBarDisplayMode
 
+/// The widthMode is used  to select whether the CITTopTabBarView should be scrollable or fill up the given space and give tabs an equal, fixed width.
+public var widthMode: CITTopTabBarWidthMode
+
 /// The font used to display tab titles.
 public var font: Font
 
