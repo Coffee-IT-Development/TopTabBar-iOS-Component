@@ -154,16 +154,16 @@ extension CITTopTabBarView {
             spacingBelowIcon: CGFloat                   = 4,
             displayMode: CITTopTabBarDisplayMode        = .atTopOfScreen(topPadding: 50),
             widthMode: CITTopTabBarWidthMode            = .scrollable,
-            font: Font                                  = .system(size: 13, weight: .light, design: .default),
+            font: Font                                  = .system(size: 14, weight: .light, design: .default),
             lineLimit: Int?                             = 1,
-            tabBarInsets: EdgeInsets                    = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
-            tabContentInsets: EdgeInsets                = .init(top: 5, leading: 16, bottom: 5, trailing: 16),
+            tabBarInsets: EdgeInsets?                   = nil,
+            tabContentInsets: EdgeInsets                = .init(top: 12, leading: 16, bottom: 12, trailing: 16),
             underlineInsets: EdgeInsets                 = CITEdgeInsets.zero,
             selectedInsets: EdgeInsets                  = CITEdgeInsets.zero,
             selectedBackgroundInsets: EdgeInsets        = CITEdgeInsets.zero,
             showUnderline: Bool                         = true,
             underlineColor: Color?                      = nil,
-            underlineHeight: CGFloat                    = 1,
+            underlineHeight: CGFloat                    = 2,
             underlineCornerRadius: CGFloat              = .infinity,
             tabAnimation: Animation?                    = .spring(),
             textAnimation: Animation?                   = .easeInOut(duration: 0.3),
@@ -183,7 +183,7 @@ extension CITTopTabBarView {
             self.widthMode = widthMode
             self.font = font
             self.lineLimit = lineLimit
-            self.tabBarInsets = tabBarInsets
+            self.tabBarInsets = tabBarInsets ?? (widthMode == .scrollable ? CITEdgeInsets.scrollableDefault : CITEdgeInsets.zero)
             self.tabContentInsets = tabContentInsets
             self.underlineInsets = underlineInsets
             self.selectedInsets = selectedInsets
