@@ -36,8 +36,7 @@ public struct CITTopTabView: View {
     public let doesAnyTabHaveIcon: Bool
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
-    
-    @State private var calculatedBackgroundHeight: CGFloat = 0
+    @Binding public var greatestBackgroundHeight: CGFloat
     
     var isSelected: Bool {
         index == selectedTab
@@ -65,6 +64,7 @@ public struct CITTopTabView: View {
                             .padding(config.tabContentInsets)
                             .background(optionalContentSizeReader)
                     }
+                    
                     optionalUnderline
                 }
                 .padding(isSelected ? config.selectedInsets : CITEdgeInsets.zero)
@@ -88,6 +88,7 @@ public struct CITTopTabView: View {
                 
                 Text(item.title)
                     .font(config.font)
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .colorMultiply(textColor)
                 
@@ -178,7 +179,7 @@ public struct CITTopTabView: View {
     var optionalBackground: some View {
         if isSelected {
             config.selectedBackgroundColor
-                .frame(height: calculatedBackgroundHeight)
+                .frame(height: greatestBackgroundHeight)
                 .cornerRadius(config.selectedBackgroundCornerRadius)
                 .padding(config.selectedBackgroundInsets)
                 .matchedGeometryEffect(id: "background", in: namespace)
@@ -203,7 +204,10 @@ public struct CITTopTabView: View {
         GeometryReader { proxy in
             Color.clear
                 .onAppear {
-                    calculatedBackgroundHeight = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
+                    let backgroundHeight = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
+                    if backgroundHeight > greatestBackgroundHeight {
+                        greatestBackgroundHeight = backgroundHeight
+                    }
                 }
         }
     }
@@ -213,6 +217,6 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0))
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0), greatestBackgroundHeight: .constant(80))
     }
 }
