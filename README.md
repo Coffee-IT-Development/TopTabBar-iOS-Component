@@ -144,6 +144,9 @@ public var tabBarInsets: EdgeInsets
 /// If you want to negate the effect this has on the underline's size, adjust the underlineInsets accordingly.
 public var tabContentInsets: EdgeInsets
 
+/// Minimum width of a single tab, defaults to `90`. If `nil`, no minimum width applies.
+public var tabViewMinWidth: CGFloat?
+
 /// Used to add insets to the underline, may be used to increase spacing between tab content and underline, add bottom padding to the underline, or make it smaller.
 /// If you want to make the underline larger, avoid using negative padding, use tabContentInsets or underlineHeight instead.
 public var underlineInsets: EdgeInsets
