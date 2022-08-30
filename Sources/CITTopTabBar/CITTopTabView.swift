@@ -166,9 +166,9 @@ public struct CITTopTabView: View {
         }
     }
     
-    // MARK: - Background logic
+    // MARK: - Background & Height Logic
     
-    /// The following logic handles how the selected background is shown.
+    /// The following logic handles how the selected background is shown and determines the greatestTabHeight to keep it equal among views.
     /// - if showUnderline: Encapsulate content and underline.
     /// - if not showUnderline: Encapsulate only the content.
     ///
