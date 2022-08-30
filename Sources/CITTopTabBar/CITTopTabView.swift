@@ -103,6 +103,7 @@ public struct CITTopTabView: View {
                 
                 Text(item.title)
                     .font(config.font)
+                    .lineLimit(config.lineLimit)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .colorMultiply(textColor)
