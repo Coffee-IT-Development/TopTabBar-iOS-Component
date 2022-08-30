@@ -89,6 +89,7 @@ public struct CITTopTabView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .frame(minWidth: config.tabViewMinWidth)
         .accessibilityLabel(item.title)
     }
     

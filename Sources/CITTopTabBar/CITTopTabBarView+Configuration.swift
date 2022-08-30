@@ -81,6 +81,9 @@ extension CITTopTabBarView {
         /// If you want to negate the effect this has on the underline's size, adjust the underlineInsets accordingly.
         public var tabContentInsets: EdgeInsets
         
+        /// Minimum width of a single tab, defaults to `90`. If `nil`, no minimum width applies.
+        public var tabViewMinWidth: CGFloat?
+        
         /// Used to add insets to the underline, may be used to increase spacing between tab content and underline, add bottom padding to the underline, or make it smaller.
         /// If you want to make the underline larger, avoid using negative padding, use tabContentInsets or underlineHeight instead.
         public var underlineInsets: EdgeInsets
@@ -158,6 +161,7 @@ extension CITTopTabBarView {
             lineLimit: Int?                             = 1,
             tabBarInsets: EdgeInsets?                   = nil,
             tabContentInsets: EdgeInsets                = .init(top: 12, leading: 16, bottom: 12, trailing: 16),
+            tabViewMinWidth: CGFloat?                   = 90,
             underlineInsets: EdgeInsets                 = CITEdgeInsets.zero,
             selectedInsets: EdgeInsets                  = CITEdgeInsets.zero,
             selectedBackgroundInsets: EdgeInsets        = CITEdgeInsets.zero,
@@ -185,6 +189,7 @@ extension CITTopTabBarView {
             self.lineLimit = lineLimit
             self.tabBarInsets = tabBarInsets ?? (widthMode == .scrollable ? CITEdgeInsets.scrollableDefault : CITEdgeInsets.zero)
             self.tabContentInsets = tabContentInsets
+            self.tabViewMinWidth = tabViewMinWidth
             self.underlineInsets = underlineInsets
             self.selectedInsets = selectedInsets
             self.selectedBackgroundInsets = selectedBackgroundInsets
