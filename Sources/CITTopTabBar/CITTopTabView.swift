@@ -94,9 +94,15 @@ public struct CITTopTabView: View {
     
     var content: some View {
         VStack(spacing: config.spacingBelowIcon) {
-            optionalIcon
+            if config.iconPosition == .top {
+                optionalIcon
+            }
             
             HStack(spacing: config.titleToBadgeSpacing) {
+                if config.iconPosition == .leading {
+                    optionalIcon
+                }
+                
                 if let badge = item.badge, badge.style.position == .leading {
                     CITNotificationBadgeView(badge: badge)
                 }

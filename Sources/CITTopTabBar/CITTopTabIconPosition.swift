@@ -1,5 +1,5 @@
 //
-//  CITTopTabBarWidthMode.swift
+//  CITTopTabIconPosition.swift
 //
 //  MIT License
 //
@@ -26,7 +26,7 @@
 
 import SwiftUI
 
-public enum CITTopTabBarWidthMode: Equatable {
-    case scrollable
-    case fixed
+public enum CITTopTabIconPosition: Equatable {
+    case leading
+    case top
 }
