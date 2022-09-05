@@ -157,7 +157,7 @@ extension CITTopTabBarView {
             spacingBelowIcon: CGFloat                   = 6,
             displayMode: CITTopTabBarDisplayMode        = .atTopOfScreen(topPadding: 50),
             widthMode: CITTopTabBarWidthMode            = .scrollable,
-            font: Font                                  = .system(size: 14, weight: .light, design: .default),
+            font: Font                                  = .system(size: 14, weight: .regular, design: .default),
             lineLimit: Int?                             = 1,
             tabBarInsets: EdgeInsets?                   = nil,
             tabContentInsets: EdgeInsets                = .init(top: 12, leading: 16, bottom: 12, trailing: 16),
