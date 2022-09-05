@@ -32,6 +32,6 @@ public struct CITEdgeInsets {
     }
     
     public static var scrollableDefault: EdgeInsets {
-        .init(top: 0, leading: 52, bottom: 0, trailing: 52)
+        CITEdgeInsets.zero
     }
 }
