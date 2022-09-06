@@ -36,8 +36,8 @@ public struct CITTopTabView: View {
     public let doesAnyTabHaveIcon: Bool
     public let namespace: Namespace.ID
     @Binding public var selectedTab: Int
-    
-    @State private var calculatedBackgroundHeight: CGFloat = 0
+    @Binding public var greatestTabHeight: CGFloat
+    @Binding public var greatestBackgroundHeight: CGFloat
     
     var isSelected: Bool {
         index == selectedTab
@@ -51,43 +51,67 @@ public struct CITTopTabView: View {
         item.iconColors(in: config)
     }
     
+    var showUnderline: Bool {
+        config.showUnderline
+    }
+    
     public var body: some View {
         Button {
             selectedTab = index
         } label: {
             ZStack {
-                optionalFullSizeBackground
+                if showUnderline {
+                    optionalSelectedBackground
+                }
                 
                 VStack(spacing: 0) {
                     ZStack {
-                        optionalContentBackground
+                        if !showUnderline {
+                            optionalSelectedBackground
+                        }
+                        
                         content
                             .padding(config.tabContentInsets)
-                            .background(optionalContentSizeReader)
+                            .frame(minHeight: greatestTabHeight)
+                            .if(!showUnderline) {
+                                $0.background(sizeReader)
+                            }
                     }
+                    
                     optionalUnderline
                 }
                 .padding(isSelected ? config.selectedInsets : CITEdgeInsets.zero)
             }
             .animation(config.tabAnimation, value: $selectedTab.wrappedValue)
-            .background(optionalFullSizeReader)
+            .if(showUnderline) {
+                $0.background(sizeReader)
+            }
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .frame(minWidth: config.tabViewMinWidth)
         .accessibilityLabel(item.title)
     }
     
     var content: some View {
         VStack(spacing: config.spacingBelowIcon) {
-            optionalIcon
+            if config.iconPosition == .top {
+                optionalIcon
+            }
             
             HStack(spacing: config.titleToBadgeSpacing) {
+                if config.iconPosition == .leading {
+                    optionalIcon
+                }
+                
                 if let badge = item.badge, badge.style.position == .leading {
                     CITNotificationBadgeView(badge: badge)
                 }
                 
                 Text(item.title)
                     .font(config.font)
+                    .lineLimit(config.lineLimit)
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .colorMultiply(textColor)
                 
@@ -143,11 +167,11 @@ public struct CITTopTabView: View {
         }
     }
     
-    // MARK: - Background logic
+    // MARK: - Background & Height Logic
     
-    /// The following logic handles how the selected background is shown.
-    /// - optionalFullSizeBackground: Encapsulates content and underline.
-    /// - optionalContentBackground: Encapsulates only the content.
+    /// The following logic handles how the selected background is shown and determines the greatestTabHeight to keep it equal among views.
+    /// - if showUnderline: Encapsulate content and underline.
+    /// - if not showUnderline: Encapsulate only the content.
     ///
     /// The reason we use optional view with manual height calculation instead of simply using .background(color)
     /// is that "matchedGeometryEffect" does not work in a .background modifier at this point in time. iOS 14-16.
@@ -158,52 +182,30 @@ public struct CITTopTabView: View {
     /// For the unselected items, we add the vertical inset to keep the height equal for all tabs.
     /// The result is a smooth transition of the selectedBackground when switching tabs.
     ///
-
-    @ViewBuilder
-    var optionalFullSizeBackground: some View {
-        if config.showUnderline {
-            optionalBackground
-        }
-    }
-    
     
     @ViewBuilder
-    var optionalContentBackground: some View {
-        if !config.showUnderline {
-            optionalBackground
-        }
-    }
-    
-    @ViewBuilder
-    var optionalBackground: some View {
+    var optionalSelectedBackground: some View {
         if isSelected {
             config.selectedBackgroundColor
-                .frame(height: calculatedBackgroundHeight)
+                .frame(height: greatestBackgroundHeight)
                 .cornerRadius(config.selectedBackgroundCornerRadius)
                 .padding(config.selectedBackgroundInsets)
                 .matchedGeometryEffect(id: "background", in: namespace)
         }
     }
     
-    @ViewBuilder
-    var optionalFullSizeReader: some View {
-        if config.showUnderline {
-            reader
-        }
-    }
-    
-    @ViewBuilder
-    var optionalContentSizeReader: some View {
-        if !config.showUnderline {
-            reader
-        }
-    }
-    
-    var reader: some View {
+    var sizeReader: some View {
         GeometryReader { proxy in
             Color.clear
                 .onAppear {
-                    calculatedBackgroundHeight = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
+                    let height = isSelected && config.showUnderline ? proxy.size.height : proxy.size.height + config.verticalSelectedInset
+                    if height > greatestBackgroundHeight {
+                        greatestBackgroundHeight = height
+                    }
+                    
+                    if height > greatestTabHeight {
+                        greatestTabHeight = height
+                    }
                 }
         }
     }
@@ -213,6 +215,6 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0))
+        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0), greatestTabHeight: .constant(100), greatestBackgroundHeight: .constant(80))
     }
 }
