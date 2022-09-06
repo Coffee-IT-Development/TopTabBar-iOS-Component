@@ -42,7 +42,7 @@ public struct CITTopTabBarView: View {
     @State private var greatestBackgroundHeight: CGFloat = 0 // Supports config.widthMode == .fixed for examplePillShapedWithInset
     
     private var doesAnyTabHaveIcon: Bool {
-        !tabs.allSatisfy { $0.icon == nil }
+        tabs.contains { $0.icon != nil }
     }
     
     /// Intialise the top tab bar view with bindings for the selectedTab and tab objects and add a config of your choice, you can use .example configs to try out the component.
