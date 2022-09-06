@@ -235,12 +235,13 @@ extension CITTopTabBarView {
         
         /// Warning: When trying out the tabs fixedWidth, don't pass along too many tabs.
         /// The default tabViewMinWidth is 90px, which matches material.io design principles.
-        /// Here, I've overridden it with 10px to prevent confusion when using this config in the example app, which realistically contains too many tab items for this mode.
+        /// Here, it's overridden with 10px to prevent confusion when using this config in the example app, which realistically contains too many tab items for this mode.
         ///
-        /// For optimal results, try the following tab setup.
-        /// Note how the names have been shortened or changed as the default linelimit is 1 line.
-        ///
-        ///@State var tabs: [CITTopTab] = [
+        /// Shorter titles have been used as the default linelimit is 1.
+        /// For optimal results, try the following tabs setup:
+        ///  
+        /// ```
+        /// @State var tabs: [CITTopTab] = [
         ///     .init(
         ///         title: "Flights",
         ///         icon: .init(systemName: "airplane.departure")
@@ -260,6 +261,7 @@ extension CITTopTabBarView {
         ///         icon: .init(systemName: "person.badge.key")
         ///     )
         /// ]
+        /// ```
         ///
         public static var exampleTabsWithFixedWidth = Configuration(
             widthMode: .fixed,
