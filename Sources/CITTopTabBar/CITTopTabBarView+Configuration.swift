@@ -159,7 +159,7 @@ extension CITTopTabBarView {
             widthMode: CITTopTabBarWidthMode            = .scrollable,
             font: Font                                  = .system(size: 14, weight: .regular, design: .default),
             lineLimit: Int?                             = 1,
-            tabBarInsets: EdgeInsets?                   = nil,
+            tabBarInsets: EdgeInsets                    = CITEdgeInsets.zero,
             tabContentInsets: EdgeInsets                = .init(top: 12, leading: 16, bottom: 12, trailing: 16),
             tabViewMinWidth: CGFloat?                   = 90,
             underlineInsets: EdgeInsets                 = CITEdgeInsets.zero,
@@ -187,7 +187,7 @@ extension CITTopTabBarView {
             self.widthMode = widthMode
             self.font = font
             self.lineLimit = lineLimit
-            self.tabBarInsets = tabBarInsets ?? (widthMode == .scrollable ? CITEdgeInsets.scrollableDefault : CITEdgeInsets.zero)
+            self.tabBarInsets = tabBarInsets
             self.tabContentInsets = tabContentInsets
             self.tabViewMinWidth = tabViewMinWidth
             self.underlineInsets = underlineInsets
