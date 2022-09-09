@@ -1,6 +1,4 @@
-<!--
-[![Coffee IT - Aroma CITTopTabBar iOS Component](https://coffeeit.nl/wp-content/uploads/2022/07/Aroma_Pincode_iOS.png)](https://coffeeit.nl/)
--->
+[![Coffee IT - Aroma CITTopTabBar iOS Component](Docs/Images/Aroma-tabbar-cover-iOS.png)](https://coffeeit.nl/)
 
 [![Swift](https://img.shields.io/badge/Swift-5.6-red?style=flat-square)](https://img.shields.io/badge/Swift-5.6-red?style=flat-square)
 [![iOS 14+](https://img.shields.io/badge/iOS-v14+-pink?style=flat-square)](https://img.shields.io/badge/iOS-v14+-pink?style=flat-square)
@@ -60,11 +58,11 @@ struct CITTopTabBarExampleView: View {
         .init(title: "Lasso", icon: .init(systemName: "lasso.and.sparkles")),
         .init(title: "Gaming", icon: .init(systemName: "gamecontroller")),
         .init(title: "Library", icon: .init(systemName: "books.vertical")),
-        .init(title: "Questions", icon: .init(systemName: "questionmark.app.dashed")),
+        .init(title: "Questions", icon: .init(systemName: "questionmark.app.dashed"))
     ]
     
     var config: CITTopTabBarView.Configuration {
-        var example: CITTopTabBarView.Configuration = .examplePillShapedWithInset
+        var example: CITTopTabBarView.Configuration = .exampleUnderlined
         example.textColor = .tabBarTextColor
         example.backgroundColor = .tabBarBackgroundColor
         return example
@@ -114,6 +112,9 @@ public var iconSize: CGSize
 /// The color of icons in unselected tabs if not overridden.
 public var iconColor: Color
 
+/// The position of icons in tabs, defaults to `top`.
+public var iconPosition: CITTopTabIconPosition
+
 /// The color of icons in the selected tab if not overridden.
 public var selectedIconColor: Color
 
@@ -125,8 +126,14 @@ public var spacingBelowIcon: CGFloat
 /// - In this case, topPadding can be used to adjust the inset from the top of the screen.
 public var displayMode: CITTopTabBarDisplayMode
 
+/// The widthMode is used  to select whether the CITTopTabBarView should be scrollable or fill up the given space and give tabs an equal, fixed width.
+public var widthMode: CITTopTabBarWidthMode
+
 /// The font used to display tab titles.
 public var font: Font
+
+/// The line limit for titles in every tab. If `nil`, no line limit applies. Defaults to `1`.
+public var lineLimit: Int?
 
 /// Used to add insets to the entire tabbar, commonly used to add horizontal padding to the scrollable content so it doesn't touch the sides in its initial state.
 public var tabBarInsets: EdgeInsets
@@ -134,6 +141,9 @@ public var tabBarInsets: EdgeInsets
 /// Used to add insets to each tab's content, may be used to increase the size of underlines and simultaneously spacing tabs apart.
 /// If you want to negate the effect this has on the underline's size, adjust the underlineInsets accordingly.
 public var tabContentInsets: EdgeInsets
+
+/// Minimum width of a single tab, defaults to `90`. If `nil`, no minimum width applies.
+public var tabViewMinWidth: CGFloat?
 
 /// Used to add insets to the underline, may be used to increase spacing between tab content and underline, add bottom padding to the underline, or make it smaller.
 /// If you want to make the underline larger, avoid using negative padding, use tabContentInsets or underlineHeight instead.
