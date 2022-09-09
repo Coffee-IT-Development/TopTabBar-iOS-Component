@@ -3,14 +3,18 @@ All notable changes to this project will be documented in this file.
 `CITTopTabBar` adheres to [Semantic Versioning](https://semver.org/).
 
 #### 1.x Releases
-- `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#121)
+- `1.3.x` Releases - [1.3.0](#130)
+- `1.2.x` Releases - [1.2.0](#120)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100) | [1.0.1](#101) | [1.0.2](#102)
 
-#### 1.2.1
+#### 1.3.0
 
 - Add top tab bar cover to readme.
 - Fix releases hotlinks by removing `anchor-` prefix.
+- Add support for fixed width tabs & relative configuration options.
+- Add support for linelimit.
+- Improved code documentation.
 
 #### 1.2.0
 
