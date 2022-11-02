@@ -12,6 +12,10 @@
 
 The CITTopTabBar package provides a stylized tab bar used to switch between different detail views. It comes with several customization options and useful features like loyalty to center position, built-in animations, swipe/page-ability and notification badges with optional numbers.
 
+<p float="left">
+    <img src="Docs/Images/top-tab-bar.gif" width="300">
+</p>
+
 ## ⚡ Installation
 
 This component requires minimum __iOS 14__.
