@@ -12,16 +12,22 @@
 
 The CITTopTabBar package provides a stylized tab bar used to switch between different detail views. It comes with several customization options and useful features like loyalty to center position, built-in animations, swipe/page-ability and notification badges with optional numbers.
 
-## Installation
+<p float="left">
+    <img src="Docs/Images/top-tab-bar.gif" width="300">
+</p>
 
-### SwiftPM
+## ⚡ Installation
+
+This component requires minimum __iOS 14__.
+
+### 🔨 SwiftPM
 
 To install the Swift Package, go to Project > Package Dependencies > + > Search or Enter Package URL > Fill in:
 ```
 https://github.com/Coffee-IT-Development/TopTabBar-iOS-Component
 ```
 
-## Usage
+## 📖 Usage
 
 Import CITTopTabBar and add a CITTopTabBarView to your SwiftUI view.
 Best used in combination with a page style TabView.
@@ -89,7 +95,7 @@ struct CITTopTabBarExampleView: View {
 }
 ```
 
-## Customization
+## ⚙️ Customization
 
 ```swift
 /// The backgroundColor of the entire tab bar if not overlayed by anything else,
@@ -191,18 +197,25 @@ public var ignoreSafeEdgeTopPadding: CGFloat
 public var showAtTopOfScreen: Bool
 ```
 
-## Contact
-
-For questions, ideas or help you can reach us by email at contact@coffeeit.nl.
-
-## Maintainer
-
-Owned and actively maintained by [Coffee IT](https://coffeeit.nl/).
-
-## More
+## 🔗 Related publications
 
 Look at our other repositories on our [GitHub account](https://github.com/orgs/Coffee-IT-Development/repositories).
 
-## License
+## ✏️ Changelog
+
+All notable changes to this project will be documented in the [Changelog](CHANGELOG.md).
+`CITTopTabBar` adheres to [Semantic Versioning](https://semver.org/).
+
+## 📧 Contact
+
+Do you have questions, ideas or need help? Send us an email at contact@coffeeit.nl.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://global-uploads.webflow.com/605a171ee93af49275331843/623b23cdea80a92703e61b42_Logo_black_1.svg" width="100">
+  <source media="(prefers-color-scheme: light)" srcset="https://coffeeit.nl/wp-content/uploads/2016/09/logo_dark_small_new.png" width="100">
+  <img alt="CoffeeIT logo" src="https://coffeeit.nl/wp-content/uploads/2016/09/logo_dark_small_new.png" width="100">
+</picture>
+
+## ⚠️ License
 
 Distributed under the MIT License. [See LICENSE](LICENSE.md) for more information.
