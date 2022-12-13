@@ -148,7 +148,7 @@ public var tabBarInsets: EdgeInsets
 /// If you want to negate the effect this has on the underline's size, adjust the underlineInsets accordingly.
 public var tabContentInsets: EdgeInsets
 
-/// Minimum width of a single tab, defaults to `90`. If `nil`, no minimum width applies.
+/// Minimum width of a single tab. If `nil`, no minimum width applies. Defaults to `90`.
 public var tabViewMinWidth: CGFloat?
 
 /// Used to add insets to the underline, may be used to increase spacing between tab content and underline, add bottom padding to the underline, or make it smaller.
@@ -181,6 +181,18 @@ public var tabAnimation: Animation?
 /// To achieve a pill shape like selection, try .infinity and setting showUnderline to false.
 /// If you experience a lack of tab content padding with regards to its selected background, check your values for "tabContentInsets" vs "selectedBackgroundInsets" as the latter may negate the former.
 public var selectedBackgroundCornerRadius: CGFloat
+
+/// Used to show a border on all unselected or not.
+public var showBorderWhileUnselected: Bool
+
+/// The width of unselected borders, defaults to `2px`.
+public var unselectedBorderWidth: CGFloat
+
+/// The color of unselected borders, defaults to selectedBackgroundColor.
+public var unselectedBorderColor: Color
+
+/// The spacing between each tab item, defaults to `0px`.
+public var tabViewSpacing: CGFloat
 
 /// Used to adjust spacing between a tab's title and its notification badge if any, defaults to 8px.
 public var titleToBadgeSpacing: CGFloat

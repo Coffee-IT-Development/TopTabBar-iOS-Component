@@ -191,6 +191,13 @@ public struct CITTopTabView: View {
                 .cornerRadius(config.selectedBackgroundCornerRadius)
                 .padding(config.selectedBackgroundInsets)
                 .matchedGeometryEffect(id: "background", in: namespace)
+        } else if config.showBorderWhileUnselected {
+            RoundedRectangle(cornerRadius: config.selectedBackgroundCornerRadius)
+                .stroke(lineWidth: config.unselectedBorderWidth)
+                .foregroundColor(config.unselectedBorderColor)
+                .frame(height: greatestBackgroundHeight)
+                .cornerRadius(config.selectedBackgroundCornerRadius)
+                .padding(config.selectedBackgroundInsets)
         }
     }
     

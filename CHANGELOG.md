@@ -3,15 +3,21 @@ All notable changes to this project will be documented in this file.
 `CITTopTabBar` adheres to [Semantic Versioning](https://semver.org/).
 
 #### 1.x Releases
-- `1.3.x` Releases - [1.3.0](#130) | [1.3.1](#131)
+- `1.3.x` Releases - [1.3.0](#130) | [1.3.1](#131) | [1.3.2](#132)
 - `1.2.x` Releases - [1.2.0](#120)
 - `1.1.x` Releases - [1.1.0](#110) | [1.1.1](#111)
 - `1.0.x` Releases - [1.0.0](#100) | [1.0.1](#101) | [1.0.2](#102)
 
-#### 1.3.0
+#### 1.3.2
 
-- Updated README to new standard.
-- Added example gif to README.
+- Add support for showing a border for unselected tab items.
+- Add support for unselected border width and color.
+- Add support for custom tab view spacing, still defaults to 0.
+
+#### 1.3.1
+
+- Update README to new standard.
+- Add example gif to README.
 
 #### 1.3.0
 
