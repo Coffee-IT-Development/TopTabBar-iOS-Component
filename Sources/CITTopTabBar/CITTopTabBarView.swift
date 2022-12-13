@@ -98,7 +98,7 @@ public struct CITTopTabBarView: View {
     }
     
     var tabBarView: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: config.tabViewSpacing) {
             ForEach(Array(zip(tabs.indices, tabs)), id: \.0) { index, item in
                 CITTopTabView(
                     index: index,

@@ -115,6 +115,18 @@ extension CITTopTabBarView {
         /// If you experience a lack of tab content padding with regards to its selected background, check your values for "tabContentInsets" vs "selectedBackgroundInsets" as the latter may negate the former.
         public var selectedBackgroundCornerRadius: CGFloat
         
+        /// Used to show a border on all unselected or not.
+        public var showBorderWhileUnselected: Bool
+        
+        /// The width of unselected borders, defaults to `2px`.
+        public var unselectedBorderWidth: CGFloat
+        
+        /// The color of unselected borders, defaults to selectedBackgroundColor.
+        public var unselectedBorderColor: Color
+        
+        /// The spacing between each tab item, defaults to `0px`.
+        public var tabViewSpacing: CGFloat
+        
         /// Used to adjust spacing between a tab's title and its notification badge if any, defaults to 8px.
         public var titleToBadgeSpacing: CGFloat
         
@@ -172,7 +184,11 @@ extension CITTopTabBarView {
             tabAnimation: Animation?                    = .spring(),
             textAnimation: Animation?                   = .easeInOut(duration: 0.3),
             selectedBackgroundCornerRadius: CGFloat     = 0,
-            titleToBadgeSpacing: CGFloat                = 8
+            titleToBadgeSpacing: CGFloat                = 8,
+            showBorderWhileUnselected: Bool             = false,
+            unselectedBorderWidth: CGFloat              = 2,
+            unselectedBorderColor: Color?               = nil,
+            tabViewSpacing: CGFloat                     = 0
         ) {
             self.backgroundColor = backgroundColor
             self.selectedBackgroundColor = selectedBackgroundColor
@@ -200,6 +216,11 @@ extension CITTopTabBarView {
             self.tabAnimation = tabAnimation
             self.selectedBackgroundCornerRadius = selectedBackgroundCornerRadius
             self.titleToBadgeSpacing = titleToBadgeSpacing
+            self.showBorderWhileUnselected = showBorderWhileUnselected
+            self.unselectedBorderWidth = unselectedBorderWidth
+            self.unselectedBorderColor = unselectedBorderColor ?? selectedBackgroundColor
+            self.tabViewSpacing = tabViewSpacing
+            
         }
         
         public static var exampleUnderlined = CITTopTabBarView.Configuration()
@@ -239,7 +260,7 @@ extension CITTopTabBarView {
         ///
         /// Shorter titles have been used as the default linelimit is 1.
         /// For optimal results, try the following tabs setup:
-        ///  
+        ///
         /// ```
         /// @State var tabs: [CITTopTab] = [
         ///     .init(
