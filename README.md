@@ -230,4 +230,4 @@ Do you have questions, ideas or need help? Send us an email at contact@coffeeit.
 
 ## ⚠️ License
 
-The {package_name} package is licensed under the terms of the [MIT Open Source license, combined with the Commons Clause licence](LICENSE.md).
+The Aroma TopTabBar package is licensed under the terms of the [MIT Open Source license, combined with the Commons Clause licence](LICENSE.md).
